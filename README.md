@@ -15,7 +15,7 @@ This container does not run nebliod nor nebliod-Qt in docker, it simply provides
 
 Windows:
 
-```sudo docker run -i --rm --name neblio-quicksync -v $APPDATA/neblio:/root/.neblio neblioteam/neblio-quicksync```
+```docker run -i --rm --name neblio-quicksync -v $APPDATA/neblio:/root/.neblio neblioteam/neblio-quicksync```
 
 Mac:
 
