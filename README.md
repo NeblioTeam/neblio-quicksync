@@ -14,10 +14,13 @@ This container does not run nebliod nor nebliod-Qt in docker, it simply provides
 - Restart neblio-Qt or nebliod and your blockchain will be synced
 
 Windows:
-```sudo docker run -i -t --rm --name neblio-quicksync -v %APPDATA%/neblio:/root/.neblio neblioteam/neblio-quicksync```
+
+```sudo docker run -i --rm --name neblio-quicksync -v $APPDATA/neblio:/root/.neblio neblioteam/neblio-quicksync```
 
 Mac:
-```sudo docker run -i -t --rm --name neblio-quicksync -v $HOME/Library/Application\ Support/neblio/:/root/.neblio neblioteam/neblio-quicksync```
+
+```sudo docker run -i --rm --name neblio-quicksync -v $HOME/Library/Application\ Support/neblio:/root/.neblio neblioteam/neblio-quicksync```
 
 Linux & RaspberryPi:
-```sudo docker run -i -t --rm --name neblio-quicksync -v $HOME/.neblio:/root/.neblio neblioteam/neblio-quicksync```
+
+```sudo docker run -i --rm --name neblio-quicksync -v $HOME/.neblio:/root/.neblio neblioteam/neblio-quicksync```
