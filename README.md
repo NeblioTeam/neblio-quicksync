@@ -21,6 +21,10 @@ Mac:
 
 ```sudo docker run -i --rm --name neblio-quicksync -v $HOME/Library/Application\ Support/neblio:/root/.neblio neblioteam/neblio-quicksync```
 
-Linux & RaspberryPi:
+Linux:
 
 ```sudo docker run -i --rm --name neblio-quicksync -v $HOME/.neblio:/root/.neblio neblioteam/neblio-quicksync```
+
+RaspberryPi:
+
+```sudo docker run -i --rm --name neblio-quicksync -v $HOME/.neblio:/root/.neblio neblioteam/neblio-quicksync-rpi```
