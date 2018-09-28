@@ -2,14 +2,22 @@
 
 set -ex
 
-echo "Copying the Neblio blockchain!"
-
 mkdir -p $HOME/.neblio
+
+echo "Remove existing copy of the blockchain if exists"
+rm $HOME/.neblio.bootstrapped/blk*.dat
+rm $HOME/.neblio.bootstrapped/db.log
+rm -r $HOME/.neblio.bootstrapped/database
+rm -r $HOME/.neblio.bootstrapped/txleveldb
+
+
+echo "Copying the Neblio blockchain!"
 cp $HOME/.neblio.bootstrapped/blk*.dat $HOME/.neblio/
 cp $HOME/.neblio.bootstrapped/db.log $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/database $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/txleveldb $HOME/.neblio/
 
+chmod 777 $HOME/.neblio
 chmod 777 $HOME/.neblio/blk*.dat
 chmod 777 $HOME/.neblio/db.log
 chmod -R 777 $HOME/.neblio/database
