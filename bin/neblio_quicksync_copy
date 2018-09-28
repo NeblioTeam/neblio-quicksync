@@ -5,10 +5,10 @@ set -ex
 mkdir -p $HOME/.neblio
 
 echo "Remove existing copy of the blockchain if exists"
-rm $HOME/.neblio.bootstrapped/blk*.dat
-rm $HOME/.neblio.bootstrapped/db.log
-rm -r $HOME/.neblio.bootstrapped/database
-rm -r $HOME/.neblio.bootstrapped/txleveldb
+rm $HOME/.neblio/blk*.dat
+rm $HOME/.neblio/db.log
+rm -r $HOME/.neblio/database
+rm -r $HOME/.neblio/txleveldb
 
 
 echo "Copying the Neblio blockchain!"
