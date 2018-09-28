@@ -9,3 +9,8 @@ cp $HOME/.neblio.bootstrapped/blk*.dat $HOME/.neblio/
 cp $HOME/.neblio.bootstrapped/db.log $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/database $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/txleveldb $HOME/.neblio/
+
+chmod 777 $HOME/.neblio/blk*.dat
+chmod 777 $HOME/.neblio/db.log
+chmod -R 777 $HOME/.neblio/database
+chmod -R 777 $HOME/.neblio/txleveldb
