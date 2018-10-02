@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -ex
+
+mkdir -p $HOME/.neblio
+
+echo "Remove existing copy of the TESTNET blockchain if exists"
+if [ -f $HOME/.neblio/testnet/blk*.dat ]; then
+    rm $HOME/.neblio/testnet/blk*.dat
+fi
+if [ -f $HOME/.neblio/testnet/db.log ]; then
+    rm $HOME/.neblio/testnet/db.log
+fi
+if [ -d $HOME/.neblio/testnet/database ]; then
+    rm -r $HOME/.neblio/testnet/database
+fi
+if [ -d $HOME/.neblio/testnet/txleveldb ]; then
+    rm -r $HOME/.neblio/testnet/txleveldb
+fi
+
+
+echo "Copying the TESTNET Neblio blockchain!"
+cp $HOME/.neblio.bootstrapped/testnet/blk*.dat $HOME/.neblio/testnet/
+cp $HOME/.neblio.bootstrapped/testnet/db.log $HOME/.neblio/testnet/
+cp -R $HOME/.neblio.bootstrapped/testnet/database $HOME/.neblio/testnet/
+cp -R $HOME/.neblio.bootstrapped/testnet/txleveldb $HOME/.neblio/testnet/
+
+chmod 777 $HOME/.neblio/testnet/
+chmod 777 $HOME/.neblio/testnet/blk*.dat
+chmod 777 $HOME/.neblio/testnet/db.log
+chmod -R 777 $HOME/.neblio/testnet/database
+chmod -R 777 $HOME/.neblio/testnet/txleveldb
