@@ -14,7 +14,7 @@ fi
 if [ -d $HOME/.neblio/database ]; then
     rm -r $HOME/.neblio/database
 fi
-if [ -d $HOME/.neblio/txleveldb ]; then
+if [ -d $HOME/.neblio/txlmdb ]; then
     rm -r $HOME/.neblio/txlmdb
 fi
 
