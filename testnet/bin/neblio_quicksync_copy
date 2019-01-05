@@ -23,8 +23,3 @@ echo "Copying the TESTNET Neblio blockchain!"
 cp $HOME/.neblio.bootstrapped/testnet/db.log $HOME/.neblio/testnet/
 cp -R $HOME/.neblio.bootstrapped/testnet/database $HOME/.neblio/testnet/
 cp -R $HOME/.neblio.bootstrapped/testnet/txlmdb $HOME/.neblio/testnet/
-
-chmod 777 $HOME/.neblio/testnet/
-chmod 777 $HOME/.neblio/testnet/db.log
-chmod -R 777 $HOME/.neblio/testnet/database
-chmod -R 777 $HOME/.neblio/testnet/txlmdb

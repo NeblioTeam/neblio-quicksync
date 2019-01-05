@@ -24,8 +24,4 @@ cp $HOME/.neblio.bootstrapped/db.log $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/database $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/txlmdb $HOME/.neblio/
 
-chmod 777 $HOME/.neblio
-chmod 777 $HOME/.neblio/db.log
-chmod -R 777 $HOME/.neblio/database
-chmod -R 777 $HOME/.neblio/txlmdb
 
