@@ -20,8 +20,6 @@ fi
 
 
 echo "Copying the Neblio blockchain!"
-cp $HOME/.neblio.bootstrapped/db.log $HOME/.neblio/
-cp -R $HOME/.neblio.bootstrapped/database $HOME/.neblio/
 cp -R $HOME/.neblio.bootstrapped/txlmdb $HOME/.neblio/
 
 
