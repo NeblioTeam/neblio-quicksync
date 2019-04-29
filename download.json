@@ -5,6 +5,6 @@
    },
    {  
       "url":"https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb",
-      "sha256":"caef84758d5036159febee833de7834a146b1d200cbbb10b6cd90bee86cd5aeb"
+      "sha256sum":"caef84758d5036159febee833de7834a146b1d200cbbb10b6cd90bee86cd5aeb"
    }
 ]
