@@ -3,11 +3,13 @@
     "files": [
       {
         "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb",
-        "sha256sum": "9098be19d8892275cbd9b7c50f0978b10ce43d42e0449974989411aa807bbb61"
+        "sha256sum": "9098be19d8892275cbd9b7c50f0978b10ce43d42e0449974989411aa807bbb61",
+        "size": 1580281856
       },
       {
         "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb",
-        "sha256sum": "caef84758d5036159febee833de7834a146b1d200cbbb10b6cd90bee86cd5aeb"
+        "sha256sum": "caef84758d5036159febee833de7834a146b1d200cbbb10b6cd90bee86cd5aeb",
+        "size": 8128
       }
     ],
     "os": "any"
