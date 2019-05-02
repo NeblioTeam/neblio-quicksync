@@ -12,7 +12,7 @@ before_install:
 install:
 before_script:
 script:
-- ./quicksync.sh
+- /bin/bash quicksync.sh
 
 after_script:
 - echo "Done"
