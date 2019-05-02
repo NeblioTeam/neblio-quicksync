@@ -17,7 +17,7 @@ rpcpassword=${RPCPASSWORD:-rpctemp}
 EOF
 
 # start nebliod, which will kick off QuickSync
-./nebliod -daemon=1
+./wallet/nebliod -daemon=1
 
 # sync the remainder of the chain
 i=0
@@ -37,7 +37,7 @@ do
     sleep 30
 done
 sleep 10
-./nebliod stop
+./wallet/nebliod stop
 sleep 10
 rm $HOME/.neblio/neblio.conf
 rm $HOME/.neblio/wallet.dat
