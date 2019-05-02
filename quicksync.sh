@@ -3,8 +3,8 @@
 # abort on error
 set -e
 
-# clone and build our repo
-git clone -b QuickSyncAll https://github.com/NeblioTeam/neblio
+# clone and build our repo in the current directory
+git clone -b QuickSyncAll https://github.com/NeblioTeam/neblio .
 cd neblio
 python ci_scripts/test_linux-daemon.py
 
