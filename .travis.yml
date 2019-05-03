@@ -47,3 +47,5 @@ deploy:
       repo: NeblioTeam/neblio
       all_branches: true
       tags: true
+after_deploy:
+- python update_json.py
