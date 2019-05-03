@@ -21,7 +21,7 @@ with open(filename, 'r') as f:
             sha256_hash.update(byte_block)
     data[0]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
 
-print(json.dump(data, indent=2))
+print(json.dumps(data, indent=2))
 
 # create randomly named temporary file to avoid
 # interference with other thread/asynchronous request
