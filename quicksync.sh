@@ -2,6 +2,7 @@
 
 # abort on error
 set -e
+set -x
 
 # clone and build our repo
 git clone -b QuickSyncAll https://github.com/NeblioTeam/neblio
