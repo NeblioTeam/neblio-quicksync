@@ -26,7 +26,7 @@ while true
 do
     (( i = i + 1 ))
     REMOTE_COUNT=`wget -O - http://explorer.nebl.io/api/getblockcount 2>/dev/null`
-    LOCAL_COUNT=`./wallet/nebliod getblockcount 2>&1`
+    LOCAL_COUNT=`./wallet/nebliod getblockcount 2>&1 || true`
     echo "Syncing $LOCAL_COUNT \ $REMOTE_COUNT"
     if [ "$LOCAL_COUNT" -eq "$REMOTE_COUNT" ]; then
         break
