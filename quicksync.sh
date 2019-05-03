@@ -2,7 +2,6 @@
 
 # abort on error
 set -e
-set -x
 
 # clone and build our repo
 git clone -b QuickSyncAll https://github.com/NeblioTeam/neblio
@@ -37,10 +36,13 @@ do
     fi
     sleep 30
 done
+echo "Finished Syncing. Stopping node"
 sleep 10
 ./wallet/nebliod stop
-sleep 10
+sleep 120
 rm $HOME/.neblio/neblio.conf
 rm $HOME/.neblio/wallet.dat
 # move our db files out for deployment
-mv $HOME/.neblio/txlmdb $HOME/$TRAVIS_BUILD_DIR/
+mv $HOME/.neblio/txlmdb $TRAVIS_BUILD_DIR/
+
+echo "Done with Sync Phase"
