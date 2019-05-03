@@ -32,7 +32,8 @@ deploy:
     bucket: quicksync
     skip_cleanup: true
     detect_encoding: true
-    local_dir: deploy
+    local_dir: txlmdb
+    upload-dir: txlmdb
     acl: public_read
     overwrite: true
     on:
