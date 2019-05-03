@@ -21,13 +21,14 @@ with open(filename, 'r') as f:
             sha256_hash.update(byte_block)
     data[0]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
 
+print("Writing the following to download.json")
 print(json.dumps(data, indent=2))
 
 # create randomly named temporary file to avoid
 # interference with other thread/asynchronous request
-#tempfile = os.path.join(os.path.dirname(filename), str(uuid.uuid4()))
-#with open(tempfile, 'w') as f:
-#    json.dump(data, f, indent=2)
+tempfile = os.path.join(os.path.dirname(filename), str(uuid.uuid4()))
+with open(tempfile, 'w') as f:
+    json.dump(data, f, indent=2)
 
 # rename temporary file replacing old file
-#os.rename(tempfile, filename)
+os.rename(tempfile, filename)
