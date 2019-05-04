@@ -40,6 +40,7 @@ deploy:
     all_branches: true
 after_deploy:
 - python update_json.py
+- git pull
 - git remote
 - git add download.json
 - git commit -m "Daily update of download.json for QuickSync"
