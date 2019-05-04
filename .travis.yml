@@ -40,6 +40,7 @@ deploy:
     all_branches: true
 after_deploy:
 - python update_json.py
-- git commit -am "Daily update of download.json for QuickSync"
-- git status
+- git remote
+- git add download.json
+- git commit -m "Daily update of download.json for QuickSync"
 - git push "https://${GHAT}@github.com/NeblioTeam/neblio-quicksync" master #> /dev/null 2>&1
