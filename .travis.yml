@@ -43,5 +43,4 @@ after_deploy:
 - python update_json.py
 - git add download.json
 - git commit -m "Daily update of download.json for QuickSync"
-- git remote add origin https://${GHAT}@github.com/NeblioTeam/neblio-quicksync
-- git push origin master #> /dev/null 2>&1
+- git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master #> /dev/null 2>&1
