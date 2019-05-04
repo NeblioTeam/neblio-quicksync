@@ -1,17 +1,17 @@
 [
-    {
-        "files": [
-            {
-                "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb",
-                "size": 1616822272,
-                "sha256sum": "3f3424fb8db3b3ab5996a74b7e1d3928dab4118ff9a6f279673df5a72b2f4fe0"
-            },
-            {
-                "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb",
-                "size": 8192,
-                "sha256sum": "45e3c918e668204f66a518a2600e2149fafc6a109613a406a747331bad5d2a07"
-            }
-        ],
-        "os": "any"
-    }
+  {
+    "files": [
+      {
+        "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb", 
+        "sha256sum": "e4e9a292de7235c7a94a5fb6bddc9555b2bc6e0d21689900ae1c2e16d27a895a", 
+        "size": 1616871424
+      }, 
+      {
+        "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb", 
+        "sha256sum": "1a26e59c75b47d5695df67f8bb04d4479daa2bf4c7d777a27cd72753194168f2", 
+        "size": 8192
+      }
+    ], 
+    "os": "any"
+  }
 ]
