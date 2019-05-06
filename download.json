@@ -12,6 +12,7 @@
         "size": 8192
       }
     ], 
-    "os": "any"
+    "os": "any",
+    "dbversion": 75013
   }
 ]
