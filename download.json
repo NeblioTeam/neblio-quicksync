@@ -19,12 +19,12 @@
     "files": [
       {
         "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb", 
-        "sha256sum": "cb0e876ac060c3924c14541b94254852b74d3d5a00da50eca1f1a42bc7766428", 
-        "size": 1641426944
+        "sha256sum": "f035ab84adcf68911d5041f04b1214d73f021d2ec39739e26e27bdc9c4a71265", 
+        "size": 1641590784
       }, 
       {
         "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb", 
-        "sha256sum": "21e2434a1748bfe64e04dda43f7f12b1b1df7c05567a8d8fb307ca480d165409", 
+        "sha256sum": "cef12fca72ede2e85c8f4f0f346e88b67c9da196269e1318414427763c6637d6", 
         "size": 8192
       }
     ], 
