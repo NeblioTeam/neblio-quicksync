@@ -3,6 +3,7 @@ import os, json, uuid, hashlib
 filename = 'download.json'
 with open(filename, 'r') as f:
     data = json.load(f)
+    data.sort(key=lambda x: x.dbversion, reverse=True)
     data[0]['files'][0]['url'] = "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb"
     data[0]['files'][0]['size'] =  os.path.getsize(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
