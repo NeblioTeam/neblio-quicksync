@@ -31,8 +31,8 @@ do
         break
     fi
     if [ "$i" -gt 60 ]; then
-        # break after 30 minutes no matter what
-        break
+        # exit after 30 minutes no matter what
+        exit 1
     fi
     sleep 30
 done
