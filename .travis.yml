@@ -23,12 +23,27 @@ notifications:
 before_deploy:
 - cd $TRAVIS_BUILD_DIR
 deploy:
-  provider: s3
+- provider: s3
   endpoint: https://ams3.digitaloceanspaces.com
   access_key_id: BVBRJD657FTIX7SNYNL2
   secret_access_key:
     secure: OjWjkOgJ2PXQ+zMGBGR/qR3ap6yrurQDi9fAhcZ1bQVc7S15SS8N3zvnFQ+3zCJFUy34rPzt9orzOVAae2JzRzW5lpAXNinAS5R94pYlyAOdL7/QAPjtvkn4nbaA6PBmoQzrhNxAG2sNe5CCA/RnsurUuvgwjLKmmlOPrz/jPGLPsI/PXKZINXlOcPYhfaaM8jvhWFB+sRhh7V6nc+P5qd1rWuhfqkjKyXjlM5XBDSgf8SX2GiPZ8mpwIqTHNNy45VemOPfy26o5cx3jCpVhEctHtdR6h2ve8XtbTMvCRWwnNBHoWgQyPI3llZW2vok+2LX+wNQcAMDp/HWOw+iSB+LKGNDp1+4aFxO6atbzZi+J9ZStQvplSsckaHRw/KCqokgLeM3AMPKfqh0GwaAYRZYd3S4So7vU2EIoTR20GAypbafc35SqWezteGj2fa05JLNjVf5Z3FejjEuo0aB/ujGS20yQz3kMSA6zMozGgwVHTnbeEFXLpbK2sFT5fraDjSAloz5iYXdgeVdUG+JvzGxnJ3R2C7SmoxtPzTasMvbWLejcafpBZm+JqrGKvU7At4oBIbzo3/F5eF781mX6G0C7XqBKGLV1ktr362qGAP5UMcz5jXWFX8vVu72Yfrycq+oJgVpx1oXbSQbbLXphT8lP6GOeVhCrUMxLiRh6NV0=
   bucket: quicksync
+  local-dir: txlmdb
+  upload-dir: txlmdb
+  skip_cleanup: true
+  detect_encoding: true
+  acl: public_read
+  overwrite: true
+  on:
+    repo: NeblioTeam/neblio-quicksync
+    all_branches: true
+- provider: s3
+  endpoint: https://sfo2.digitaloceanspaces.com
+  access_key_id: BVBRJD657FTIX7SNYNL2
+  secret_access_key:
+    secure: OjWjkOgJ2PXQ+zMGBGR/qR3ap6yrurQDi9fAhcZ1bQVc7S15SS8N3zvnFQ+3zCJFUy34rPzt9orzOVAae2JzRzW5lpAXNinAS5R94pYlyAOdL7/QAPjtvkn4nbaA6PBmoQzrhNxAG2sNe5CCA/RnsurUuvgwjLKmmlOPrz/jPGLPsI/PXKZINXlOcPYhfaaM8jvhWFB+sRhh7V6nc+P5qd1rWuhfqkjKyXjlM5XBDSgf8SX2GiPZ8mpwIqTHNNy45VemOPfy26o5cx3jCpVhEctHtdR6h2ve8XtbTMvCRWwnNBHoWgQyPI3llZW2vok+2LX+wNQcAMDp/HWOw+iSB+LKGNDp1+4aFxO6atbzZi+J9ZStQvplSsckaHRw/KCqokgLeM3AMPKfqh0GwaAYRZYd3S4So7vU2EIoTR20GAypbafc35SqWezteGj2fa05JLNjVf5Z3FejjEuo0aB/ujGS20yQz3kMSA6zMozGgwVHTnbeEFXLpbK2sFT5fraDjSAloz5iYXdgeVdUG+JvzGxnJ3R2C7SmoxtPzTasMvbWLejcafpBZm+JqrGKvU7At4oBIbzo3/F5eF781mX6G0C7XqBKGLV1ktr362qGAP5UMcz5jXWFX8vVu72Yfrycq+oJgVpx1oXbSQbbLXphT8lP6GOeVhCrUMxLiRh6NV0=
+  bucket: quicksync-backup
   local-dir: txlmdb
   upload-dir: txlmdb
   skip_cleanup: true
