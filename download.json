@@ -2,37 +2,43 @@
   {
     "files": [
       {
-        "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb",
-        "size": 1737322496,
-        "sha256sum": "9d880ec7cd4e659a14b52c74e6ae5f9aa30da8cbf4d07b1891f41cf3a9db893c"
-      },
+        "url": [
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/data.mdb"
+        ], 
+        "sha256sum": "b9818b23ccaab69fdf5809dd909b2330042d130d1b71170ac3adbb0f9868d2e8", 
+        "size": 1745002496
+      }, 
       {
-        "url": "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb",
-        "size": 8192,
-        "sha256sum": "f1414a7bf6b4df4203afcfbaf6e17ca639da49582b00bed5409e532da0790af5"
+        "url": [
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/lock.mdb"
+        ], 
+        "sha256sum": "cd827deff6b1ecfd12c573a688f0b2286ef21c7433a51de9efbb7d83ed6906eb", 
+        "size": 8192
       }
-    ],
-    "dbversion": 75014,
+    ], 
+    "dbversion": 75014, 
     "os": "any"
-  },
+  }, 
   {
     "files": [
       {
         "url": [
-        	"https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/data.mdb"
-        ],
-        "size": 1641426944,
-        "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718"
-      },
+          "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/data.mdb"
+        ], 
+        "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718", 
+        "size": 1641426944
+      }, 
       {
         "url": [
-        	"https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/lock.mdb"
-        ],
-        "size": 8192,
-        "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c"
+          "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/lock.mdb"
+        ], 
+        "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c", 
+        "size": 8192
       }
-    ],
-    "dbversion": 75013,
+    ], 
+    "dbversion": 75013, 
     "os": "any"
   }
 ]
