@@ -53,7 +53,7 @@ deploy:
   on:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
-after_deploy:
+after_script:
 - git config --global user.email "info@nebl.io"
 - git config --global user.name "NeblioTeam"
 - git checkout master
