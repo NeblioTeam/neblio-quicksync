@@ -3,16 +3,14 @@
     "files": [
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/data.mdb"
+          "https://nebl.io/quicksync/data.mdb"
         ], 
         "size": 1847459840, 
         "sha256sum": "3f51df1fd6ebe981128474122bdeddda62fcb96df63deed93a5c9e329668abb2"
       }, 
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/lock.mdb"
+          "https://nebl.io/quicksync/lock.mdb"
         ], 
         "size": 8192, 
         "sha256sum": "66b9ae7545d3a388bb06947fe06add15a32316f83403e9882f48d47828b4aae8"
