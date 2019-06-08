@@ -14,8 +14,6 @@ install:
 before_script:
 script:
 - "/bin/bash quicksync.sh"
-after_script:
-- echo "Done"
 notifications:
   email:
     recipients:
@@ -30,7 +28,7 @@ deploy:
     secure: OjWjkOgJ2PXQ+zMGBGR/qR3ap6yrurQDi9fAhcZ1bQVc7S15SS8N3zvnFQ+3zCJFUy34rPzt9orzOVAae2JzRzW5lpAXNinAS5R94pYlyAOdL7/QAPjtvkn4nbaA6PBmoQzrhNxAG2sNe5CCA/RnsurUuvgwjLKmmlOPrz/jPGLPsI/PXKZINXlOcPYhfaaM8jvhWFB+sRhh7V6nc+P5qd1rWuhfqkjKyXjlM5XBDSgf8SX2GiPZ8mpwIqTHNNy45VemOPfy26o5cx3jCpVhEctHtdR6h2ve8XtbTMvCRWwnNBHoWgQyPI3llZW2vok+2LX+wNQcAMDp/HWOw+iSB+LKGNDp1+4aFxO6atbzZi+J9ZStQvplSsckaHRw/KCqokgLeM3AMPKfqh0GwaAYRZYd3S4So7vU2EIoTR20GAypbafc35SqWezteGj2fa05JLNjVf5Z3FejjEuo0aB/ujGS20yQz3kMSA6zMozGgwVHTnbeEFXLpbK2sFT5fraDjSAloz5iYXdgeVdUG+JvzGxnJ3R2C7SmoxtPzTasMvbWLejcafpBZm+JqrGKvU7At4oBIbzo3/F5eF781mX6G0C7XqBKGLV1ktr362qGAP5UMcz5jXWFX8vVu72Yfrycq+oJgVpx1oXbSQbbLXphT8lP6GOeVhCrUMxLiRh6NV0=
   bucket: quicksync
   local-dir: txlmdb
-  upload-dir: txlmdb
+  upload-dir: txlmdb/$TRAVIS_COMMIT
   skip_cleanup: true
   detect_encoding: true
   acl: public_read
@@ -45,7 +43,7 @@ deploy:
     secure: OjWjkOgJ2PXQ+zMGBGR/qR3ap6yrurQDi9fAhcZ1bQVc7S15SS8N3zvnFQ+3zCJFUy34rPzt9orzOVAae2JzRzW5lpAXNinAS5R94pYlyAOdL7/QAPjtvkn4nbaA6PBmoQzrhNxAG2sNe5CCA/RnsurUuvgwjLKmmlOPrz/jPGLPsI/PXKZINXlOcPYhfaaM8jvhWFB+sRhh7V6nc+P5qd1rWuhfqkjKyXjlM5XBDSgf8SX2GiPZ8mpwIqTHNNy45VemOPfy26o5cx3jCpVhEctHtdR6h2ve8XtbTMvCRWwnNBHoWgQyPI3llZW2vok+2LX+wNQcAMDp/HWOw+iSB+LKGNDp1+4aFxO6atbzZi+J9ZStQvplSsckaHRw/KCqokgLeM3AMPKfqh0GwaAYRZYd3S4So7vU2EIoTR20GAypbafc35SqWezteGj2fa05JLNjVf5Z3FejjEuo0aB/ujGS20yQz3kMSA6zMozGgwVHTnbeEFXLpbK2sFT5fraDjSAloz5iYXdgeVdUG+JvzGxnJ3R2C7SmoxtPzTasMvbWLejcafpBZm+JqrGKvU7At4oBIbzo3/F5eF781mX6G0C7XqBKGLV1ktr362qGAP5UMcz5jXWFX8vVu72Yfrycq+oJgVpx1oXbSQbbLXphT8lP6GOeVhCrUMxLiRh6NV0=
   bucket: quicksync-backup
   local-dir: txlmdb
-  upload-dir: txlmdb
+  upload-dir: txlmdb/$TRAVIS_COMMIT
   skip_cleanup: true
   detect_encoding: true
   acl: public_read
@@ -54,10 +52,10 @@ deploy:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
 after_script:
-- git config --global user.email "info@nebl.io"
-- git config --global user.name "NeblioTeam"
-- git checkout master
-- python update_json.py
-- git add download.json
-- git commit -m "Daily update of download.json for QuickSync"
-- git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master > /dev/null 2>&1
+ - git config --global user.email "info@nebl.io"
+# - git config --global user.name "NeblioTeam"
+# - git checkout master
+# - python update_json.py
+# - git add download.json
+# - git commit -m "Daily update of download.json for QuickSync"
+# - git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master > /dev/null 2>&1
