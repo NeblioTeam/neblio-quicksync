@@ -56,12 +56,12 @@ deploy:
     all_branches: true
 after_script:
 - echo "Upload to AMS3 Successful, moving files and cleaning up"
-- aws s3 mv s3://quicksync/txlmdb/$TRAVIS_COMMIT/data.mdb s3://quicksync/data.mdb --endpoint=https://ams3.digitaloceanspaces.com
-- aws s3 mv s3://quicksync/txlmdb/$TRAVIS_COMMIT/lock.mdb s3://quicksync/lock.mdb --endpoint=https://ams3.digitaloceanspaces.com
+- aws s3 mv s3://quicksync/txlmdb/$TRAVIS_COMMIT/data.mdb s3://quicksync/txlmdb/data.mdb --endpoint=https://ams3.digitaloceanspaces.com
+- aws s3 mv s3://quicksync/txlmdb/$TRAVIS_COMMIT/lock.mdb s3://quicksync/txlmdb/lock.mdb --endpoint=https://ams3.digitaloceanspaces.com
 - aws s3 rm s3://quicksync/txlmdb/$TRAVIS_COMMIT --recursive --endpoint=https://ams3.digitaloceanspaces.com
 - echo "Upload to SFO2 Successful, moving files and cleaning up"
-- aws s3 mv s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT/data.mdb s3://quicksync-backup/data.mdb --endpoint=https://sfo2.digitaloceanspaces.com
-- aws s3 mv s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT/lock.mdb s3://quicksync-backup/lock.mdb --endpoint=https://sfo2.digitaloceanspaces.com
+- aws s3 mv s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT/data.mdb s3://quicksync-backup/txlmdb/data.mdb --endpoint=https://sfo2.digitaloceanspaces.com
+- aws s3 mv s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT/lock.mdb s3://quicksync-backup/txlmdb/lock.mdb --endpoint=https://sfo2.digitaloceanspaces.com
 - aws s3 rm s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT --recursive --endpoint=https://sfo2.digitaloceanspaces.com
 - echo "All files in place, updating download.json"
 - git config --global user.email "info@nebl.io"
