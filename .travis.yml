@@ -20,6 +20,7 @@ notifications:
     - info@nebl.io
 before_deploy:
 - cd $TRAVIS_BUILD_DIR
+- pip install awscli --upgrade --user
 deploy:
 - provider: s3
   endpoint: https://ams3.digitaloceanspaces.com
@@ -52,7 +53,8 @@ deploy:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
 after_script:
- - git config --global user.email "info@nebl.io"
+- aws s3 rm s3://quicksync/txlmdb/$TRAVIS_COMMIT/data.mdb --endpoint=https://ams3.digitaloceanspaces.com
+# - git config --global user.email "info@nebl.io"
 # - git config --global user.name "NeblioTeam"
 # - git checkout master
 # - python update_json.py
