@@ -55,15 +55,9 @@ deploy:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
 after_script:
-- echo "Upload to AMS3 Successful, moving files and cleaning up"
-- aws s3 mv s3://quicksync/txlmdb/$TRAVIS_COMMIT/data.mdb s3://quicksync/txlmdb/data.mdb --acl public-read --endpoint=https://ams3.digitaloceanspaces.com
-- aws s3 mv s3://quicksync/txlmdb/$TRAVIS_COMMIT/lock.mdb s3://quicksync/txlmdb/lock.mdb --acl public-read --endpoint=https://ams3.digitaloceanspaces.com
-- aws s3 rm s3://quicksync/txlmdb/$TRAVIS_COMMIT --recursive --endpoint=https://ams3.digitaloceanspaces.com
-- echo "Upload to SFO2 Successful, moving files and cleaning up"
-- aws s3 mv s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT/data.mdb s3://quicksync-backup/txlmdb/data.mdb --acl public-read --endpoint=https://sfo2.digitaloceanspaces.com
-- aws s3 mv s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT/lock.mdb s3://quicksync-backup/txlmdb/lock.mdb --acl public-read --endpoint=https://sfo2.digitaloceanspaces.com
-- aws s3 rm s3://quicksync-backup/txlmdb/$TRAVIS_COMMIT --recursive --endpoint=https://sfo2.digitaloceanspaces.com
-- echo "All files in place, updating download.json"
+- echo "Removing Old Files"
+- aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$TRAVIS_COMMIT/*" --endpoint=https://ams3.digitaloceanspaces.com
+- aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$TRAVIS_COMMIT/*" --endpoint=https://sfo2.digitaloceanspaces.com
 - git config --global user.email "info@nebl.io"
 - git config --global user.name "NeblioTeam"
 - git checkout master
