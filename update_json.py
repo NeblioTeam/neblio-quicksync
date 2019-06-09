@@ -5,8 +5,8 @@ with open(filename, 'r') as f:
     data = json.load(f)
     data.sort(key=lambda x: x['dbversion'], reverse=True)
     data_urls = []
-    data_urls.append("https://quicksync.ams3.digitaloceanspaces.com/txlmdb/data.mdb")
-    data_urls.append("https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/data.mdb")
+    data_urls.append("https://quicksync.ams3.digitaloceanspaces.com/txlmdb/" + os.environ['TRAVIS_COMMIT'] + "/data.mdb")
+    data_urls.append("https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/" + os.environ['TRAVIS_COMMIT'] + "/data.mdb")
     data[0]['files'][0]['url'] = data_urls
     data[0]['files'][0]['size'] =  os.path.getsize(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
@@ -17,8 +17,8 @@ with open(filename, 'r') as f:
     data[0]['files'][0]['sha256sum'] = sha256_hash.hexdigest()
 
     lock_urls = []
-    lock_urls.append("https://quicksync.ams3.digitaloceanspaces.com/txlmdb/lock.mdb")
-    lock_urls.append("https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/lock.mdb")
+    lock_urls.append("https://quicksync.ams3.digitaloceanspaces.com/txlmdb/" + os.environ['TRAVIS_COMMIT'] + "/lock.mdb")
+    lock_urls.append("https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/" + os.environ['TRAVIS_COMMIT'] + "/lock.mdb")
     data[0]['files'][1]['url'] = lock_urls
     data[0]['files'][1]['size'] =  os.path.getsize(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb')
     sha256_hash = hashlib.sha256()
