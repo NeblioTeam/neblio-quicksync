@@ -56,6 +56,8 @@ deploy:
     all_branches: true
 after_deploy:
 - python verify_deploy.py
+after_failure:
+- python verify_deploy.py
 after_script:
 - git config --global user.email "info@nebl.io"
 - git config --global user.name "NeblioTeam"
