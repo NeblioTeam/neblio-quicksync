@@ -36,6 +36,7 @@ deploy:
   detect_encoding: true
   acl: public_read
   overwrite: true
+  allow_failure: true
   on:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
@@ -51,6 +52,7 @@ deploy:
   detect_encoding: true
   acl: public_read
   overwrite: true
+  allow_failure: true
   on:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
