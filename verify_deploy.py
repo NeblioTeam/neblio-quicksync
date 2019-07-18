@@ -5,7 +5,7 @@ def restart_job():
 
 sha256_hash = hashlib.sha256()
 # calculate lock.mdb checksum
-print('Calculating sha256sum for uploaded lock.mdb)
+print('Calculating sha256sum for uploaded lock.mdb')
 with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
     # Read and update hash string value in blocks of 4K
     for byte_block in iter(lambda: f.read(4096),b""):

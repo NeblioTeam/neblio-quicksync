@@ -16,7 +16,7 @@ before_install:
 install:
 before_script:
 script:
-- "/bin/bash start_quicksync.sh"
+- "/bin/bash quicksync.sh"
 notifications:
   email:
     recipients:
@@ -57,8 +57,6 @@ deploy:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
 after_deploy:
-- python verify_deploy.py
-after_failure:
 - python verify_deploy.py
 after_script:
 - git config --global user.email "info@nebl.io"
