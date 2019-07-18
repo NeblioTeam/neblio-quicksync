@@ -15,7 +15,7 @@ with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
 lock_sha256 = sha256_hash.hexdigest()
 
 # calculate data.mdb checksum
-print('Calculating sha256sum for uploaded data.mdb)
+print('Calculating sha256sum for uploaded data.mdb')
 with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
     # Read and update hash string value in blocks of 4K
     for byte_block in iter(lambda: f.read(4096),b""):
