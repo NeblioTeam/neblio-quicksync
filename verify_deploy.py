@@ -13,6 +13,7 @@ with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
     for byte_block in iter(lambda: f.read(4096),b""):
         sha256_hash.update(byte_block)
 lock_sha256 = sha256_hash.hexdigest()
+print(lock_sha256)
 
 # calculate data.mdb checksum
 print('Calculating sha256sum for uploaded data.mdb')
@@ -21,6 +22,7 @@ with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
     for byte_block in iter(lambda: f.read(4096),b""):
         sha256_hash.update(byte_block)
 data_sha256 = sha256_hash.hexdigest()
+print(data_sha256)
 
 tmp_dir = 'tmp_download'
 prefix = ''
