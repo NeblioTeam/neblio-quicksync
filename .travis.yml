@@ -16,7 +16,7 @@ before_install:
 install:
 before_script:
 script:
-- "/bin/bash quicksync.sh"
+- "/bin/bash start_quicksync.sh"
 notifications:
   email:
     recipients:
