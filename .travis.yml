@@ -13,7 +13,6 @@ env:
   - secure: tCsJEPIS5d34u1Mo8xSY93RhExm0DS0RYDqy9CE8pmR7zRkN7RC0M0Ogfiq0crAs1xBLyigX4GWa9x6VAzDHner5RP0yx0BW7f3H+6629ZXEXmKnq+Kv8UkQTjh+8NSuNsprc91i5/UmGZLbgalNMq1O1lmLDPFjlI1pQK7Rx0LhdEzsVCstVvQmHm3W8i4WOoU/U91DagI9zu2JRmvX0zN4UlqvVDFwRxLEYiLjozNnIDvUV9gJGt5zn1Kx9Ux3P7if/xLBCdutleds8ufzBkhnV1DkZinOe7ra68TnSFRKRq0v8RVXWJhP5t48RY1ekLzgDsPte7IEkxlh8iMPQaGTx7qeQzRxJDrYXqo2rJdRCnvGjWz+oLTcDzenKiM0wF5TBVCVd0975karUwy9kOzTXifh14Zj9Qv/WRupHnBQ9tx/LJAxVEWF9eKNfBD1Zho5kXBGBX9GbEDq3C3V0EK6oAhtDDW3R1SNAByQPMledioULsSemy/AIAw1N4A3E3llxnsnNqXdZMiGHFpzytXQxY0KoOICbtk2YynDPI4nABJSfEhm7O8y7bE/WeL/XMqJMP485u1z7+JF8rrbANA0120GWIK/REP9w6repFc1R5cYOy1VYLUhYLF6U3xIZBKyVGUst2cCDd5HsKafUfETZRvARKv3VrafxvjfMCk=
 before_install:
 - pip install awscli --upgrade --user
-- pip install requests
 install:
 before_script:
 script:
@@ -23,7 +22,10 @@ notifications:
     recipients:
     - info@nebl.io
 before_deploy:
+# cd to build dir, uninstall/reinstall urllib3 for requests to work properly
 - cd $TRAVIS_BUILD_DIR
+- pip uninstall urllib3
+- pip install urllib3==1.22
 deploy:
 - provider: s3
   endpoint: https://ams3.digitaloceanspaces.com
