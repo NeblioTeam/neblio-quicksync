@@ -24,7 +24,7 @@ notifications:
 before_deploy:
 # cd to build dir, uninstall/reinstall urllib3 for requests to work properly
 - cd $TRAVIS_BUILD_DIR
-- pip uninstall urllib3
+- pip uninstall -y urllib3
 - pip install urllib3==1.22
 deploy:
 - provider: s3
