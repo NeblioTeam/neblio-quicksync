@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # abort on error
-set -e
+#set -e
 
 # clone and build our repo
 git clone -b master https://github.com/NeblioTeam/neblio
