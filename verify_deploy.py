@@ -1,7 +1,9 @@
-import os, json, hashlib, requests
+import os, json, hashlib, requests, subprocess
 
 def restart_job():
    print('SIMULATING JOB RESTART')
+   subprocess.call("travis_terminate 1", shell=True)
+
 
 sha256_hash = hashlib.sha256()
 # calculate lock.mdb checksum
