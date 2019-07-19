@@ -8,18 +8,18 @@ def restart_job():
    h = {'Content-Type': 'application/json', 'Travis-API-Version': '3', 'Accept': 'application/json', 'Authorization': token}
    d = {}
    r = requests.post(url, data=d, headers=h)
-   print(r.status_code)
 
    print('Deploy Verification Failed. Killing This Job.')
    sys.exit(1)
 
 
-sha256_hash = hashlib.sha256()
+
 
 print('Starting Deploy Verification. Sleeping 60s to let deploys finish.')
 time.sleep(60)
 # calculate lock.mdb checksum
 print('Calculating sha256sum for uploaded lock.mdb')
+sha256_hash = hashlib.sha256()
 with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
     # Read and update hash string value in blocks of 4K
     for byte_block in iter(lambda: f.read(4096),b""):
@@ -29,6 +29,7 @@ print(lock_sha256)
 
 # calculate data.mdb checksum
 print('Calculating sha256sum for uploaded data.mdb')
+sha256_hash = hashlib.sha256()
 with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
     # Read and update hash string value in blocks of 4K
     for byte_block in iter(lambda: f.read(4096),b""):
@@ -65,6 +66,7 @@ for url in [url1, url2]:
     	restart_job()
     open(file_name, 'wb').write(r.content)
     # verify checksum
+    sha256_hash = hashlib.sha256()
     with open(os.environ['TRAVIS_BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, "rb") as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096),b""):
