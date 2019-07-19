@@ -1,11 +1,18 @@
 import os, json, hashlib, requests, subprocess, time, sys
 
 def restart_job():
-   print('SIMULATING JOB RESTART')
+   print('FAILURE. RESTARTING JOB.')
+   h = {'Content-Type': 'application/json', 'Travis-API-Version': '3', 'Accept': 'application/json', 'Authorization': 'token ' + os.environ["TRAVIS_API_TOKEN"]}
+   d = {}
+   r = requests.post("https://api.travis-ci.org/job/"+os.environ['TRAVIS_JOB_ID']+"/restart", data=d, headers=h)
+
+   print('Deploy Verification Failed. Killing Job.')
    sys.exit(1)
 
 
 sha256_hash = hashlib.sha256()
+
+print('Starting Deploy Verification. Sleeping 60s to let deploys finish.')
 time.sleep(60)
 # calculate lock.mdb checksum
 print('Calculating sha256sum for uploaded lock.mdb')
