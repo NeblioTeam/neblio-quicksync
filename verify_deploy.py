@@ -1,4 +1,4 @@
-import os, json, hashlib, requests, subprocess
+import os, json, hashlib, requests, subprocess, time
 
 def restart_job():
    print('SIMULATING JOB RESTART')
@@ -6,6 +6,7 @@ def restart_job():
 
 
 sha256_hash = hashlib.sha256()
+time.sleep(60)
 # calculate lock.mdb checksum
 print('Calculating sha256sum for uploaded lock.mdb')
 with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
