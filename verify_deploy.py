@@ -3,10 +3,10 @@ import os, json, hashlib, requests, subprocess, time, sys
 def restart_job():
    print('FAILURE. RESTARTING JOB.')
 
-   url = 'https://api.travis-ci.org/repo/NeblioTeam/neblio-quicksync/requests'
+   url = 'https://api.travis-ci.org/repo/NeblioTeam%2Fneblio-quicksync/requests'
    token = "token " + os.environ["TRAVIS_API_TOKEN"]
    h = {'Content-Type': 'application/json', 'Travis-API-Version': '3', 'Accept': 'application/json', 'Authorization': token}
-   d = {"request":{"message":"Neblio QuickSync Build Restart", "branch": os.environ["TRAVIS_BRANCH"]}}
+   d = {}
    r = requests.post(url, data=d, headers=h)
    print(r.status_code)
 
