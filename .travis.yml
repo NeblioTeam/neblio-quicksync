@@ -61,7 +61,7 @@ deploy:
     repo: NeblioTeam/neblio-quicksync
     all_branches: true
 after_deploy:
-- python verify_deploy.py || travis_terminate 1
+- python verify_deploy.py #|| travis_terminate 1
 after_script:
 - git config --global user.email "info@nebl.io"
 - git config --global user.name "NeblioTeam"
