@@ -2,9 +2,12 @@ import os, json, hashlib, requests, subprocess, time, sys
 
 def restart_job():
    print('FAILURE. RESTARTING JOB.')
-   h = {'Content-Type': 'application/json', 'Travis-API-Version': '3', 'Accept': 'application/json', 'Authorization': 'token ' + os.environ["TRAVIS_API_TOKEN"]}
+   url = "https://api.travis-ci.org/job/" + os.environ["TRAVIS_JOB_ID"] + "/restart"
+   token = "token " + os.environ["TRAVIS_API_TOKEN"]
+   h = {'Content-Type': 'application/json', 'Travis-API-Version': '3', 'Accept': 'application/json', 'Authorization': token}
    d = {}
-   r = requests.post("https://api.travis-ci.org/job/"+os.environ['TRAVIS_JOB_ID']+"/restart", data=d, headers=h)
+   r = requests.post(url, data=d, headers=h)
+   print(r.status_code)
 
    print('Deploy Verification Failed. Killing Job.')
    sys.exit(1)
