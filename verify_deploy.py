@@ -1,8 +1,8 @@
-import os, json, hashlib, requests, subprocess, time
+import os, json, hashlib, requests, subprocess, time, sys
 
 def restart_job():
    print('SIMULATING JOB RESTART')
-   subprocess.call("travis_terminate 1", shell=True)
+   sys.exit(1)
 
 
 sha256_hash = hashlib.sha256()

@@ -3,9 +3,6 @@
 # abort on error
 set -e
 
-pwd
-ls -al
-
 # clone and build our repo
 git clone -b master https://github.com/NeblioTeam/neblio
 cd neblio
