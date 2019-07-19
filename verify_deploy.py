@@ -2,14 +2,15 @@ import os, json, hashlib, requests, subprocess, time, sys
 
 def restart_job():
    print('FAILURE. RESTARTING JOB.')
-   url = "https://api.travis-ci.org/job/" + os.environ["TRAVIS_JOB_ID"] + "/restart"
+
+   url = 'https://api.travis-ci.org/repo/NeblioTeam/neblio-quicksync/requests'
    token = "token " + os.environ["TRAVIS_API_TOKEN"]
    h = {'Content-Type': 'application/json', 'Travis-API-Version': '3', 'Accept': 'application/json', 'Authorization': token}
-   d = {}
+   d = {"request":{"message":"Neblio QuickSync Build Restart", "branch": os.environ["TRAVIS_BRANCH"]}}
    r = requests.post(url, data=d, headers=h)
    print(r.status_code)
 
-   print('Deploy Verification Failed. Killing Job.')
+   print('Deploy Verification Failed. Killing This Job.')
    sys.exit(1)
 
 
