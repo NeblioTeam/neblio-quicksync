@@ -82,8 +82,8 @@ for url in [url1, url2]:
     		restart_job()
     	else:
     		# checksum valid
-    		print(filename + " sha256sum is valid")
-    		os.remove(filename)
+    		print(file_name + " sha256sum is valid")
+    		os.remove(file_name)
     if file_name == "lock.mdb":
     	if lock_sha256 != downloaded_sha256:
     		print('SHA256 did not match for lock.mdb')
@@ -93,8 +93,8 @@ for url in [url1, url2]:
     		restart_job()
     	else:
     		# checksum valid
-    		print(filename + " sha256sum is valid")
-    		os.remove(filename)
+    		print(file_name + " sha256sum is valid")
+    		os.remove(file_name)
 
 
 
