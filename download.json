@@ -3,19 +3,19 @@
     "files": [
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/tmp/lock.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/tmp/lock.mdb"
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/557d0a4cdf8cdb0f4c0460014188552c4ee97685/lock.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/557d0a4cdf8cdb0f4c0460014188552c4ee97685/lock.mdb"
         ], 
-        "size": 8192, 
-        "sha256sum": "6ede11de6e778ff895d688cdd3ad8ba602241fdd6ca91ecfc50f8c8da756dacc"
+        "sha256sum": "a02f55646a13c550080a931f63b79d641aaa873e0494a0a5d76d302628e1cea3", 
+        "size": 8192
       }, 
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/tmp/data.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/tmp/data.mdb"
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/557d0a4cdf8cdb0f4c0460014188552c4ee97685/data.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/557d0a4cdf8cdb0f4c0460014188552c4ee97685/data.mdb"
         ], 
-        "size": 2098884608, 
-        "sha256sum": "fd8ef488b1de6ecd38e00dd95978a601d42f24de8a33f12736bf2cc280b2b1af"
+        "sha256sum": "fe0d64c4de3dfc50263bee9c905681f47a158ae37eaeda80e0b17804a1d409f8", 
+        "size": 2099036160
       }
     ], 
     "dbversion": 75014, 
@@ -27,15 +27,15 @@
         "url": [
           "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/data.mdb"
         ], 
-        "size": 1641426944, 
-        "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718"
+        "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718", 
+        "size": 1641426944
       }, 
       {
         "url": [
           "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/lock.mdb"
         ], 
-        "size": 8192, 
-        "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c"
+        "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c", 
+        "size": 8192
       }
     ], 
     "dbversion": 75013, 
