@@ -1,6 +1,6 @@
 name: neblio-quicksync
 
-on: [push]
+on: [push,repository_dispatch]
 #   schedule:
 #     - cron:  '15 * * * *'
 
