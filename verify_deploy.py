@@ -20,7 +20,7 @@ time.sleep(60)
 # calculate lock.mdb checksum
 print('Calculating sha256sum for uploaded lock.mdb')
 sha256_hash = hashlib.sha256()
-with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
+with open(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
     # Read and update hash string value in blocks of 4K
     for byte_block in iter(lambda: f.read(4096),b""):
         sha256_hash.update(byte_block)
@@ -30,7 +30,7 @@ print(lock_sha256)
 # calculate data.mdb checksum
 print('Calculating sha256sum for uploaded data.mdb')
 sha256_hash = hashlib.sha256()
-with open(os.environ['TRAVIS_BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
+with open(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
     # Read and update hash string value in blocks of 4K
     for byte_block in iter(lambda: f.read(4096),b""):
         sha256_hash.update(byte_block)
@@ -49,8 +49,8 @@ else:
 
 os.chdir(tmp_dir)
 downloaded_sha256 = ''
-url1 = prefix + os.environ['TRAVIS_COMMIT'] + "/data.mdb"
-url2 = prefix + os.environ['TRAVIS_COMMIT'] + "/lock.mdb"
+url1 = prefix + os.environ['COMMIT'] + "/data.mdb"
+url2 = prefix + os.environ['COMMIT'] + "/lock.mdb"
 # check if the above URLs exist
 for url in [url1, url2]:
     check = requests.head(url)
@@ -67,7 +67,7 @@ for url in [url1, url2]:
     open(file_name, 'wb').write(r.content)
     # verify checksum
     sha256_hash = hashlib.sha256()
-    with open(os.environ['TRAVIS_BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, "rb") as f:
+    with open(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, "rb") as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096),b""):
             sha256_hash.update(byte_block)

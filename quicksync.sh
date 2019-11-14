@@ -43,6 +43,6 @@ sleep 120
 rm $HOME/.neblio/neblio.conf
 rm $HOME/.neblio/wallet.dat
 # move our db files out for deployment
-mv $HOME/.neblio/txlmdb $TRAVIS_BUILD_DIR/
+mv $HOME/.neblio/txlmdb $BUILD_DIR/
 
 echo "Done with Sync Phase"

@@ -8,6 +8,8 @@ cache:
 env:
   global:
   - CCACHE_MAXSIZE: 1G
+  - BUILD_DIR: $TRAVIS_BUILD_DIR
+  - COMMIT: $TRAVIS_COMMIT
   - secure: r5SNhSkxjKOAM2L+SNucQWowy2n4OREFAA0POPhUAQ0suis9SUSVCnW3lt/OBr1chhMzr9QJViQMdwqhiPMWWb6QS3C46FtOLQQBrLIy9bSs/HOo0jQLG8jHxWcifiUNWuD8E4QjNb7jn6gU//zRVxWx4lnJ1U6EfQn6dx1BoFvFhkQTdgBULZx5Tqt83DtpS4JjFIJFelghw8jE/vAzDB5Vct3p+Ua0lJgpeS59p61hv/j6rTrsl1sYaKEm6I5aifvmBhOo0dlcP+MYtfr5yVdmpw2VTh4fMHsI8wBgh7zeHb2Iz5rB+CZOwZfeETlUDJWwvMIzF1LxvpcD5BWWu+3F0ybo4TpxHibCtI632peIUc49IxSLC9JOA8EoQgpX0thfB3qfMh4v9hX9K0OXl6j0gSCVjVF23aq7hDcWITy+9fXbO0Jeq4eX7dQOZp/GoICLMQwnu/o7yswRSCkTvPf9rIbxOCxH9xgahZyz7hI4OoEM7eAg0/YpVgp7C7XBXv/MrMCjP2Ad4phlaMBV9x/zKWUvxnGq3x6OoZcjC8r+0BcfgIS6aUalVkg2el75sPfADqHX1xXhUc2i1GycyGJwAeGgxQ7/zDmEqHxRl/5syWft2F/hpAzlAAT9OdsUY15VTyOnsYdjdsLEGJVnmHbDdpTRCnzg2LBtNq598lg=
   - secure: YEL1aX4m/VMi7fdKk6SRaqdHi7Pnfo4JfAGFHZq42MxsUQy1NpPKEjwVRTlg652TNNX9utaZMB6y7RS1XyTX/kPY64GGfLNzQ2nRNgehdoTfoMTuV/2REltP8cUwpk5CsROSc3aJOnu8HN+1cWI0HlbhhrTZr0aXWYYjEDEi1IH61U+xlLHDy0okbEHLeOpgpl0wXRVRPwgvLf6sPtk23jhFZYbLIhewpmZzeFaKjsgrWpfKN+jdnnlDN8zLAeXj8IE27jGzsSVffQonZStNRbVwDSRhqxDhtUbtIMnCXj5uHEqHxgigiYOZN8Fiy/WujKK6K7WxMJh+IQhlLBVGPg3r5uyTEbX1QYqQkT85u6a4zxCleHnY/6WUq9+Kgceg/LCH37rQbwqh0IlkmHImrKl3AXt9a/vBTgGwzvKzNiNPbD7x+5+TG6VaRAy5fYGrabCZ1FydFnQutQSRD+c3yppVeNNtdtXNPXJYJMAtlthAz6bvUw14in8RzZoY9gTOeTtqz4DP0PMtNNwgAYIGkc3WBhFCLWUfj6sHLDs8LEZbSVQQLH0IbyVwqVmUhOupzahY50vPI0Up5Qn3LOleLLk1NlqyqXxTXuFAQ2mwkhC4CVjJ1Pkts1a7UD6thMwU5rSdvG1np3ZabOfLyJtzi2Chq9hj1Bp2bftQyX4bsik=
   - secure: tCsJEPIS5d34u1Mo8xSY93RhExm0DS0RYDqy9CE8pmR7zRkN7RC0M0Ogfiq0crAs1xBLyigX4GWa9x6VAzDHner5RP0yx0BW7f3H+6629ZXEXmKnq+Kv8UkQTjh+8NSuNsprc91i5/UmGZLbgalNMq1O1lmLDPFjlI1pQK7Rx0LhdEzsVCstVvQmHm3W8i4WOoU/U91DagI9zu2JRmvX0zN4UlqvVDFwRxLEYiLjozNnIDvUV9gJGt5zn1Kx9Ux3P7if/xLBCdutleds8ufzBkhnV1DkZinOe7ra68TnSFRKRq0v8RVXWJhP5t48RY1ekLzgDsPte7IEkxlh8iMPQaGTx7qeQzRxJDrYXqo2rJdRCnvGjWz+oLTcDzenKiM0wF5TBVCVd0975karUwy9kOzTXifh14Zj9Qv/WRupHnBQ9tx/LJAxVEWF9eKNfBD1Zho5kXBGBX9GbEDq3C3V0EK6oAhtDDW3R1SNAByQPMledioULsSemy/AIAw1N4A3E3llxnsnNqXdZMiGHFpzytXQxY0KoOICbtk2YynDPI4nABJSfEhm7O8y7bE/WeL/XMqJMP485u1z7+JF8rrbANA0120GWIK/REP9w6repFc1R5cYOy1VYLUhYLF6U3xIZBKyVGUst2cCDd5HsKafUfETZRvARKv3VrafxvjfMCk=
@@ -24,7 +26,7 @@ notifications:
     - info@nebl.io
 before_deploy:
 # cd to build dir, uninstall/reinstall urllib3 for 'requests' to work properly
-- cd $TRAVIS_BUILD_DIR
+- cd $BUILD_DIR
 - sudo pip uninstall -y urllib3
 - sudo pip install urllib3==1.22
 deploy:
@@ -35,7 +37,7 @@ deploy:
     secure: OjWjkOgJ2PXQ+zMGBGR/qR3ap6yrurQDi9fAhcZ1bQVc7S15SS8N3zvnFQ+3zCJFUy34rPzt9orzOVAae2JzRzW5lpAXNinAS5R94pYlyAOdL7/QAPjtvkn4nbaA6PBmoQzrhNxAG2sNe5CCA/RnsurUuvgwjLKmmlOPrz/jPGLPsI/PXKZINXlOcPYhfaaM8jvhWFB+sRhh7V6nc+P5qd1rWuhfqkjKyXjlM5XBDSgf8SX2GiPZ8mpwIqTHNNy45VemOPfy26o5cx3jCpVhEctHtdR6h2ve8XtbTMvCRWwnNBHoWgQyPI3llZW2vok+2LX+wNQcAMDp/HWOw+iSB+LKGNDp1+4aFxO6atbzZi+J9ZStQvplSsckaHRw/KCqokgLeM3AMPKfqh0GwaAYRZYd3S4So7vU2EIoTR20GAypbafc35SqWezteGj2fa05JLNjVf5Z3FejjEuo0aB/ujGS20yQz3kMSA6zMozGgwVHTnbeEFXLpbK2sFT5fraDjSAloz5iYXdgeVdUG+JvzGxnJ3R2C7SmoxtPzTasMvbWLejcafpBZm+JqrGKvU7At4oBIbzo3/F5eF781mX6G0C7XqBKGLV1ktr362qGAP5UMcz5jXWFX8vVu72Yfrycq+oJgVpx1oXbSQbbLXphT8lP6GOeVhCrUMxLiRh6NV0=
   bucket: quicksync
   local-dir: txlmdb
-  upload-dir: txlmdb/$TRAVIS_COMMIT
+  upload-dir: txlmdb/$COMMIT
   skip_cleanup: true
   detect_encoding: true
   acl: public_read
@@ -51,7 +53,7 @@ deploy:
     secure: OjWjkOgJ2PXQ+zMGBGR/qR3ap6yrurQDi9fAhcZ1bQVc7S15SS8N3zvnFQ+3zCJFUy34rPzt9orzOVAae2JzRzW5lpAXNinAS5R94pYlyAOdL7/QAPjtvkn4nbaA6PBmoQzrhNxAG2sNe5CCA/RnsurUuvgwjLKmmlOPrz/jPGLPsI/PXKZINXlOcPYhfaaM8jvhWFB+sRhh7V6nc+P5qd1rWuhfqkjKyXjlM5XBDSgf8SX2GiPZ8mpwIqTHNNy45VemOPfy26o5cx3jCpVhEctHtdR6h2ve8XtbTMvCRWwnNBHoWgQyPI3llZW2vok+2LX+wNQcAMDp/HWOw+iSB+LKGNDp1+4aFxO6atbzZi+J9ZStQvplSsckaHRw/KCqokgLeM3AMPKfqh0GwaAYRZYd3S4So7vU2EIoTR20GAypbafc35SqWezteGj2fa05JLNjVf5Z3FejjEuo0aB/ujGS20yQz3kMSA6zMozGgwVHTnbeEFXLpbK2sFT5fraDjSAloz5iYXdgeVdUG+JvzGxnJ3R2C7SmoxtPzTasMvbWLejcafpBZm+JqrGKvU7At4oBIbzo3/F5eF781mX6G0C7XqBKGLV1ktr362qGAP5UMcz5jXWFX8vVu72Yfrycq+oJgVpx1oXbSQbbLXphT8lP6GOeVhCrUMxLiRh6NV0=
   bucket: quicksync-backup
   local-dir: txlmdb
-  upload-dir: txlmdb/$TRAVIS_COMMIT
+  upload-dir: txlmdb/$COMMIT
   skip_cleanup: true
   detect_encoding: true
   acl: public_read
@@ -71,5 +73,5 @@ after_script:
 - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then git commit -m "Daily update of download.json for QuickSync"; fi
 - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master > /dev/null 2>&1; fi
 - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then echo "Removing Old Files"; fi
-- if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$TRAVIS_COMMIT/*" --endpoint=https://ams3.digitaloceanspaces.com; fi
-- if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$TRAVIS_COMMIT/*" --endpoint=https://sfo2.digitaloceanspaces.com; fi
+- if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$COMMIT/*" --endpoint=https://ams3.digitaloceanspaces.com; fi
+- if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$COMMIT/*" --endpoint=https://sfo2.digitaloceanspaces.com; fi
