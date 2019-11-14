@@ -24,6 +24,13 @@ def restart_job():
 
 
 print('Starting Deploy Verification. Sleeping 60s to let deploys finish.')
+if os.environ.get('TRAVIS_API_TOKEN') is not None:
+    os.environ['COMMIT'] = os.environ.get('TRAVIS_COMMIT')
+    os.environ['BUILD_DIR'] = os.environ.get('TRAVIS_BUILD_DIR')
+else:
+    os.environ['BUILD_DIR'] = os.environ.get('GITHUB_WORKSPACE')
+    os.environ['COMMIT'] = os.environ.get('GITHUB_SHA')
+
 time.sleep(60)
 # calculate lock.mdb checksum
 print('Calculating sha256sum for uploaded lock.mdb')
