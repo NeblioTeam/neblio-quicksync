@@ -42,7 +42,7 @@ jobs:
       env:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
-        SOURCE_DIR: txmldb
+        SOURCE_DIR: txlmdb
     - name: Upload Quicksync Files to SFO2
       uses: jakejarvis/s3-sync-action@v0.5.0
       with:
@@ -50,7 +50,7 @@ jobs:
       env:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET2 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT2 }}
-        SOURCE_DIR: txmldb
+        SOURCE_DIR: txlmdb
     - name: Verify Uploaded Files
       run: |
         python verify_deploy.py
