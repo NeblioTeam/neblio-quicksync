@@ -4,6 +4,15 @@ on: [push]
 #   schedule:
 #     - cron:  '15 * * * *'
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_S3_BUCKET1: 'quicksync'
+  AWS_S3_ENDPOINT1: 'https://ams3.digitaloceanspaces.com'
+  AWS_S3_BUCKET2: 'quicksync-backup'
+  AWS_S3_ENDPOINT2: 'https://sfo2.digitaloceanspaces.com'
+
 jobs:
   linux_daemon_build:
     runs-on: ubuntu-16.04
@@ -25,4 +34,13 @@ jobs:
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
-        ls -al $BUILD_DIR
+    - name: Upload Quicksync Files to AMS3
+      uses: jakejarvis/s3-sync-action@v0.5.0
+      with:
+        args: --acl public-read
+      env:
+        AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
+        AWS_S3_ENDPOINT: ${{ AWS_S3_ENDPOINT1 }}
+        SOURCE_DIR: txlmdb
+        DEST_DIR: txlmdb/$COMMIT
+
