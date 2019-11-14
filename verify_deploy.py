@@ -17,8 +17,8 @@ def restart_job():
         r = requests.post(url, data=json.dumps(d), headers=h)
 
 
-   print('Deploy Verification Failed. Killing This Job.')
-   sys.exit(1)
+    print('Deploy Verification Failed. Killing This Job.')
+    sys.exit(1)
 
 
 
