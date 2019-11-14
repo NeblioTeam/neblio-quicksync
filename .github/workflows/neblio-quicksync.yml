@@ -40,7 +40,7 @@ jobs:
         args: --acl public-read
       env:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
-        AWS_S3_ENDPOINT: ${{ AWS_S3_ENDPOINT1 }}
+        AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
         SOURCE_DIR: txlmdb
         DEST_DIR: txlmdb/$COMMIT
 
