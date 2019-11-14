@@ -8,6 +8,7 @@ jobs:
   linux_daemon_build:
     runs-on: ubuntu-16.04
     steps:
+    - uses: actions/checkout@v1
     - name: ccache
       uses: actions/cache@v1
       with:
