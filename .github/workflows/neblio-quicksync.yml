@@ -1,0 +1,27 @@
+name: neblio-quicksync
+
+on: [push]
+#   schedule:
+#     - cron:  '15 * * * *'
+
+jobs:
+  linux_daemon_build:
+    runs-on: ubuntu-16.04
+    steps:
+    - name: ccache
+      uses: actions/cache@v1
+      with:
+        path: .ccache
+        key: ${{ runner.OS }}--linux_daemon-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.OS }}--linux_daemon-
+    - name: Install Dependencies & Setup Environment
+      run: |
+        echo ::set-env name=TRAVIS_BUILD_DIR::$(echo ${GITHUB_WORKSPACE})
+        pip install awscli --upgrade --user
+        sudo pip uninstall -y urllib3
+        sudo pip install urllib3==1.22
+    - name: Build nebliod for Linux & Sync
+      run: |
+        /bin/bash quicksync.sh
+        ls -al $TRAVIS_BUILD_DIR
