@@ -29,7 +29,6 @@ jobs:
       run: |
         echo "::set-env name=BUILD_DIR::$(echo ${GITHUB_WORKSPACE})"
         echo "::set-env name=DEST_DIR::$(echo txlmdb/)$(echo ${GITHUB_SHA})"
-        echo "::set-env name=SOURCE_DIR::txlmdb"
         pip install awscli --upgrade --user
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
@@ -43,4 +42,16 @@ jobs:
       env:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
+        SOURCE_DIR: txmldb
+    - name: Upload Quicksync Files to SFO2
+      uses: jakejarvis/s3-sync-action@v0.5.0
+      with:
+        args: --acl public-read
+      env:
+        AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET2 }}
+        AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT2 }}
+        SOURCE_DIR: txmldb
+    - name: Verify Uploaded Files
+      run: |
+        python verify_deploy.py
 
