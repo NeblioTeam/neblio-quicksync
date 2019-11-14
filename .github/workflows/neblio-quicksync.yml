@@ -27,9 +27,9 @@ jobs:
           ${{ runner.OS }}--linux_daemon-
     - name: Install Dependencies & Setup Environment
       run: |
-        echo ::set-env name=BUILD_DIR::$(echo ${GITHUB_WORKSPACE})
-        echo ::set-env name=DEST_DIR::${{ join('txlmdb/',${GITHUB_SHA}) }}
-        echo ::set-env name=SOURCE_DIR::txlmdb
+        echo "::set-env name=BUILD_DIR::$(echo ${GITHUB_WORKSPACE})"
+        echo "::set-env name=DEST_DIR::${{ join('txlmdb/',$GITHUB_SHA) }}"
+        echo "::set-env name=SOURCE_DIR::txlmdb"
         pip install awscli --upgrade --user
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
