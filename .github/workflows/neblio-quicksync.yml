@@ -28,6 +28,8 @@ jobs:
     - name: Install Dependencies & Setup Environment
       run: |
         echo ::set-env name=BUILD_DIR::$(echo ${GITHUB_WORKSPACE})
+        echo ::set-env name=DEST_DIR::${{ join('txlmdb/',$(echo ${GITHUB_SHA})) }}
+        echo ::set-env name=SOURCE_DIR::txlmdb
         pip install awscli --upgrade --user
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
@@ -41,6 +43,4 @@ jobs:
       env:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
-        SOURCE_DIR: txlmdb
-        DEST_DIR: txlmdb/$COMMIT
 
