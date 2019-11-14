@@ -25,4 +25,4 @@ jobs:
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
-        ls -al $TRAVIS_BUILD_DIR
+        ls -al $BUILD_DIR
