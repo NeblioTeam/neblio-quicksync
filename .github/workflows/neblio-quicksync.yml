@@ -54,5 +54,5 @@ jobs:
         SOURCE_DIR: txlmdb
     - name: Verify Uploaded Files
       run: |
-        python verify_deploy.py
+        python -u verify_deploy.py
 
