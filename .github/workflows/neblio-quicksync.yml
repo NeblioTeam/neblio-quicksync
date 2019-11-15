@@ -8,6 +8,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  GHAT: ${{ secrets.GHAT }}
   AWS_S3_BUCKET1: 'quicksync'
   AWS_S3_ENDPOINT1: 'https://ams3.digitaloceanspaces.com'
   AWS_S3_BUCKET2: 'quicksync-backup'
@@ -64,7 +65,7 @@ jobs:
     - name: If Failure Restart Job
       if: failure()
       run: |
-        curl -v POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H "Authorization: token $GITHUB_TOKEN" --data '{"event_type": "restart_neblio_quicksync"}'
+        curl -v POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H "Authorization: token $GHAT" --data '{"event_type": "restart_neblio_quicksync"}'
     - name: If Success Update JSON Files & Cleanup
       if: success()
       run: |
