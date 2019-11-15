@@ -2,7 +2,7 @@ name: neblio-quicksync
 
 on: [push,repository_dispatch]
 #   schedule:
-#     - cron:  '15 * * * *'
+#     - cron:  '15 05 * * *'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -44,6 +44,9 @@ jobs:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
         SOURCE_DIR: txlmdb
+    - name: Verify Uploaded Files on AMS
+      run: |
+        python -u verify_deploy.py
     - name: Upload Quicksync Files to SFO2
       uses: jakejarvis/s3-sync-action@v0.5.0
       with:
@@ -52,7 +55,20 @@ jobs:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET2 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT2 }}
         SOURCE_DIR: txlmdb
-    - name: Verify Uploaded Files
+    - name: Verify Uploaded Files on SFO2
       run: |
         python -u verify_deploy.py
+    - name: Update JSON Files & Cleanup
+      if: success()
+      run: |
+        git config --global user.email "info@nebl.io"
+        git config --global user.name "NeblioTeam"
+        git checkout master
+        python -u update_json.py
+        git add download.json
+        git commit -m "Daily update of download.json for QuickSync"
+        git push https://${GITHUB_TOKEN}@github.com/NeblioTeam/neblio-quicksync master > /dev/null 2>&1
+        echo "Removing Old Files"
+        aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://ams3.digitaloceanspaces.com
+        aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
 
