@@ -14,7 +14,7 @@ def restart_job():
         token = "token " + os.environ["GITHUB_TOKEN"]
         h = {'Accept': 'application/vnd.github.everest-preview+json', 'Authorization': token}
         d = {"event_type": "restart_neblio_quicksync"}
-        r = requests.post(url, data=json.dumps(d), headers=h)
+        # r = requests.post(url, data=json.dumps(d), headers=h)
 
 
     print('Deploy Verification Failed. Killing This Job.')

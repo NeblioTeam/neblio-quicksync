@@ -16,6 +16,8 @@ env:
 jobs:
   linux_daemon_build:
     runs-on: ubuntu-16.04
+    strategy:
+      fail-fast: false
     steps:
     - uses: actions/checkout@v1
     - name: ccache
@@ -58,7 +60,11 @@ jobs:
     - name: Verify Uploaded Files on SFO2
       run: |
         python -u verify_deploy.py
-    - name: Update JSON Files & Cleanup
+    - name: If Failure Restart Job
+      if: failure()
+      run: |
+        curl -X POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H 'Authorization: token $GITHUB_TOKEN' --data '{"event_type": "restart_neblio_quicksync"}'
+    - name: If Success Update JSON Files & Cleanup
       if: success()
       run: |
         git config --global user.email "info@nebl.io"
