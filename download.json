@@ -3,19 +3,19 @@
     "files": [
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/6cdb744b32c2ff052e49773668b46e962dd91c47/lock.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/6cdb744b32c2ff052e49773668b46e962dd91c47/lock.mdb"
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/ef39d5ddc2d40d378bbaac4a5f3a95a80bfc6751/lock.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/ef39d5ddc2d40d378bbaac4a5f3a95a80bfc6751/lock.mdb"
         ], 
-        "sha256sum": "8c99225ff27de09029f7c52681fd62781e9a65ec77c0660ba8229bfc6a721a70", 
+        "sha256sum": "de81fc2f6b66a326833582070faaf04fc024b3f50b9bd9cdcf6038c4ab0d969f", 
         "size": 8192
       }, 
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/6cdb744b32c2ff052e49773668b46e962dd91c47/data.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/6cdb744b32c2ff052e49773668b46e962dd91c47/data.mdb"
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/ef39d5ddc2d40d378bbaac4a5f3a95a80bfc6751/data.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/ef39d5ddc2d40d378bbaac4a5f3a95a80bfc6751/data.mdb"
         ], 
-        "sha256sum": "513374b383f6b6ca3b603f3d694fbe1bde59a547f67dcf4aac8bd8f12a198adf", 
-        "size": 2641195008
+        "sha256sum": "25e17e564d276a2336a430e7ca0e829c6415c78d07361e7defae68fb17be3c2d", 
+        "size": 2644586496
       }
     ], 
     "dbversion": 75014, 
