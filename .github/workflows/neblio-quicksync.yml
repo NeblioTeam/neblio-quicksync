@@ -30,7 +30,6 @@ jobs:
           ${{ runner.OS }}--linux_daemon-
     - name: Install Dependencies & Setup Environment
       run: |
-        exit 1
         echo "::set-env name=BUILD_DIR::$(echo ${GITHUB_WORKSPACE})"
         echo "::set-env name=DEST_DIR::$(echo txlmdb/)$(echo ${GITHUB_SHA})"
         pip install awscli --upgrade --user
