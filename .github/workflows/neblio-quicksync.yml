@@ -63,7 +63,7 @@ jobs:
     - name: If Failure Restart Job
       if: failure()
       run: |
-        curl -X POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H 'Authorization: token $GITHUB_TOKEN' --data '{"event_type": "restart_neblio_quicksync"}'
+        curl -X POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H "Authorization: token $GITHUB_TOKEN" --data '{"event_type": "restart_neblio_quicksync"}'
     - name: If Success Update JSON Files & Cleanup
       if: success()
       run: |
