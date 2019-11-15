@@ -74,7 +74,7 @@ jobs:
         python -u update_json.py
         git add download.json
         git commit -m "Daily update of download.json for QuickSync"
-        git push https://${GITHUB_TOKEN}@github.com/NeblioTeam/neblio-quicksync master
+        git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         echo "Removing Old Files"
         aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://ams3.digitaloceanspaces.com
         aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
