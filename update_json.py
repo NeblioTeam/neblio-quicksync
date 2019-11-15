@@ -1,5 +1,11 @@
 import os, json, uuid, hashlib
 
+
+# set up env vars if we are in github actions
+if os.environ.get('TRAVIS_API_TOKEN') is None:
+	os.environ['COMMIT'] = os.environ.get('GITHUB_SHA')
+	os.environ['BUILD_DIR'] = os.environ['GITHUB_WORKSPACE']
+
 filename = 'download.json'
 with open(filename, 'r') as f:
     data = json.load(f)
