@@ -48,7 +48,7 @@ jobs:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
         SOURCE_DIR: txlmdb
-    - name: Verify Uploaded Files on AMS
+    - name: Verify Uploaded Files on AMS3
       run: |
         python -u verify_deploy.py
     - name: Upload Quicksync Files to SFO2
