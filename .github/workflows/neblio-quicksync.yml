@@ -21,10 +21,9 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-    - name: debug
-      run: echo $GITHUB_REF
     - uses: actions/checkout@v1
     - name: ccache
+      if: github.event_name != 'repository_dispatch'
       uses: actions/cache@v1
       with:
         path: .ccache
