@@ -3,19 +3,19 @@
     "files": [
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/410e0f2542c756a9247a812c69c5c7d02389de6f/lock.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/410e0f2542c756a9247a812c69c5c7d02389de6f/lock.mdb"
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/feb6de6b1ac4555ff4a4ed0b1e43e4169335ba38/lock.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/feb6de6b1ac4555ff4a4ed0b1e43e4169335ba38/lock.mdb"
         ], 
-        "size": 8192, 
-        "sha256sum": "a8df3a30186737c7f0d670f95ed5c14dc23d398f56cd5a288460e1edde69e9c7"
+        "sha256sum": "ecea55acdd8ee95d9a614ded67ec018614c6c2b866c3853a13414b26ac49e9bf", 
+        "size": 8192
       }, 
       {
         "url": [
-          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/410e0f2542c756a9247a812c69c5c7d02389de6f/data.mdb", 
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/410e0f2542c756a9247a812c69c5c7d02389de6f/data.mdb"
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/feb6de6b1ac4555ff4a4ed0b1e43e4169335ba38/data.mdb", 
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/feb6de6b1ac4555ff4a4ed0b1e43e4169335ba38/data.mdb"
         ], 
-        "size": 2680590336, 
-        "sha256sum": "28e2919347ff590433eb8bfdbe75c34fe5aa6fbd7b22d953cfc1113b562c227b"
+        "sha256sum": "d934bcf7de60975e4dbdc20ab8d697356174ca8a9bc6206b09dfd9e17c41feef", 
+        "size": 2685677568
       }
     ], 
     "dbversion": 75014, 
@@ -27,15 +27,15 @@
         "url": [
           "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/data.mdb"
         ], 
-        "size": 1641426944, 
-        "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718"
+        "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718", 
+        "size": 1641426944
       }, 
       {
         "url": [
           "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-75013/lock.mdb"
         ], 
-        "size": 8192, 
-        "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c"
+        "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c", 
+        "size": 8192
       }
     ], 
     "dbversion": 75013, 
