@@ -44,5 +44,6 @@ rm $HOME/.neblio/neblio.conf
 rm $HOME/.neblio/wallet.dat
 # move our db files out for deployment
 mv $HOME/.neblio/txlmdb $BUILD_DIR/
+split --numeric-suffixes --bytes=100M $BUILD_DIR/txlmdb/data.mdb $BUILD_DIR/txlmdb/data.mdb.chunk
 
 echo "Done with Sync Phase"
