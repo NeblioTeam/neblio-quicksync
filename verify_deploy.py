@@ -56,7 +56,7 @@ suffix = ''
 if not os.path.exists(tmp_dir):
     # check first download
     prefix = "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/"
-    chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/,"data.mdb.chunk*"))
+    chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
     suffix = '?parts=' + chunkCount
     os.mkdir(tmp_dir) # dir does not exist, create it
 else:
