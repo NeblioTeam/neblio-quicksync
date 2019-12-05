@@ -52,16 +52,15 @@ print(data_sha256)
 
 tmp_dir = 'tmp_download'
 prefix = ''
-suffix = ''
+chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
+suffix = '?parts=' + str(chunkCount-1)
 if not os.path.exists(tmp_dir):
     # check first download
     prefix = "https://quicksync.nebl.io/txlmdb/"
-    chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
-    suffix = '?parts=' + str(chunkCount-1)
     os.mkdir(tmp_dir) # dir does not exist, create it
 else:
     # check second download
-    prefix = "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/"
+    prefix = "https://quicksync2.nebl.io/txlmdb/"
 
 os.chdir(tmp_dir)
 downloaded_sha256 = ''
