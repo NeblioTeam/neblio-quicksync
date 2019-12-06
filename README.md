@@ -1,6 +1,6 @@
 # Neblio QuickSync
 
-This repo constains docker files and scripts that run one or more times a day to generate a fully-synced copy of the Neblio blockchain. 
+This repo contains docker files and scripts that run one or more times a day to generate a fully-synced copy of the Neblio blockchain. 
 
 Newly installed versions of nebliod and neblio-Qt will check for links at this repo to the latest version of the QuickSync files.
 
