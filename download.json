@@ -18,6 +18,28 @@
         "size": 2723958784
       }
     ],
+    "dbversion": 70515,
+    "os": "any"
+  },
+  {
+    "files": [
+      {
+        "url": [
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/8568808a7c1b9f454a25afb000948b865849257c/lock.mdb",
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/8568808a7c1b9f454a25afb000948b865849257c/lock.mdb"
+        ],
+        "sha256sum": "1026f30ad846f6f496293cbf426cda5b1b355b4b59805a1013d44674532b157b",
+        "size": 8192
+      },
+      {
+        "url": [
+          "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/8568808a7c1b9f454a25afb000948b865849257c/data.mdb",
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/8568808a7c1b9f454a25afb000948b865849257c/data.mdb"
+        ],
+        "sha256sum": "eb24a03c882d7c195799c35dd802ec42747db01a7ef69ff1005beccea4276f25",
+        "size": 2723958784
+      }
+    ],
     "dbversion": 70514,
     "os": "any"
   },
