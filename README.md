@@ -1,30 +1,21 @@
 # Neblio QuickSync
 
-This docker container copies a fully-synced copy of the Neblio blockchain to the appropriate directory on your Windows, Mac, Linux or Raspberry Pi system. This container brings Neblio QuickSync to any system running neblio-Qt or nebliod.
+This repo contains docker files and scripts that run one or more times a day to generate a fully-synced copy of the Neblio blockchain. 
 
-This container does not run nebliod nor nebliod-Qt in docker, it simply provides nebliod or neblio-Qt already running on your system with a fully-synced copy of the Neblio Blockchain.
+Newly installed versions of nebliod and neblio-Qt will check for links at this repo to the latest version of the QuickSync files.
 
-## Prerequisites
-- [Install Docker](https://store.docker.com/search?offering=community&type=edition)
+You may also perform a manual QuickSync if automatic QuickSync is not working for you for some reason.
 
-## Instructions
-- Always back up your wallet.
-- Close neblio-Qt or nebliod if it is running
-- Run one of the following commands, depending on your Operating System. The only difference between these commands is the folder that the blockchain gets copied to.
-- Restart neblio-Qt or nebliod and your blockchain will be synced
+To perform a manual Quicksync, get the links from here for data.mdb and lock.mdb: https://github.com/NeblioTeam/neblio-quicksync/blob/master/download.json (the links change every day)
 
-Windows:
+```
+- Close nebliod/neblio-Qt
+- Download one of the lock.mdb files and one of the data.mdb files from the download.json linked 
+  above (choose links for the highest dbversion such as 75014, 75015, etc)
+- Verify the sha256sum of the downloads (important!)
+- Move both .mdb files to the txlmdb folder in the neblio data directory, overwriting 
+  any that are already there.
+- Open nebliod/neblio-Qt
+```
 
-```docker run -i --rm --name neblio-quicksync -v $APPDATA/neblio:/root/.neblio neblioteam/neblio-quicksync```
-
-Mac:
-
-```sudo docker run -i --rm --name neblio-quicksync -v $HOME/Library/Application\ Support/neblio:/root/.neblio neblioteam/neblio-quicksync```
-
-Linux:
-
-```sudo docker run -i --rm --name neblio-quicksync -v $HOME/.neblio:/root/.neblio neblioteam/neblio-quicksync```
-
-RaspberryPi:
-
-```sudo docker run -i --rm --name neblio-quicksync -v $HOME/.neblio:/root/.neblio neblioteam/neblio-quicksync-rpi```
+If your wallet keeps trying to automaticly quicksync and you do not want it to, you can add noquicksync=1 to your neblio.conf

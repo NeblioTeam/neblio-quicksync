@@ -5,8 +5,8 @@ set -e
 
 # clone and build our repo
 git clone -b master https://github.com/NeblioTeam/neblio
-cd neblio
-python ci_scripts/test_linux-daemon.py
+mv ./neblio/* ./
+python ci_scripts/test_linux-daemon-gui.py
 
 echo "Finished Building. Syncing blockchain data"
 mkdir -p $HOME/.neblio
@@ -44,5 +44,6 @@ rm $HOME/.neblio/neblio.conf
 rm $HOME/.neblio/wallet.dat
 # move our db files out for deployment
 mv $HOME/.neblio/txlmdb $BUILD_DIR/
+split --numeric-suffixes --suffix-length=5 --bytes=100M $BUILD_DIR/txlmdb/data.mdb $BUILD_DIR/txlmdb/data.mdb.chunk
 
 echo "Done with Sync Phase"

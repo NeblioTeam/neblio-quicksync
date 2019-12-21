@@ -1,4 +1,4 @@
-import os, json, hashlib, requests, subprocess, time, sys
+import os, json, hashlib, requests, subprocess, time, sys, glob
 
 def restart_job():
     print('FAILURE. RESTARTING JOB.')
@@ -52,17 +52,23 @@ print(data_sha256)
 
 tmp_dir = 'tmp_download'
 prefix = ''
+chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
+suffix = '?parts=' + str(chunkCount-1)
 if not os.path.exists(tmp_dir):
     # check first download
-    prefix = "https://quicksync.ams3.digitaloceanspaces.com/txlmdb/"
+    prefix = "https://quicksync.nebl.io/txlmdb/"
     os.mkdir(tmp_dir) # dir does not exist, create it
 else:
     # check second download
-    prefix = "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/"
+    prefix = "https://quicksync2.nebl.io/txlmdb/"
 
 os.chdir(tmp_dir)
 downloaded_sha256 = ''
-url1 = prefix + os.environ['COMMIT'] + "/data.mdb"
+url1 = ''
+if suffix is None:
+    url1 = prefix + os.environ['COMMIT'] + "/data.mdb"
+else:
+    url1 = prefix + os.environ['COMMIT'] + "/data.mdb" + suffix
 url2 = prefix + os.environ['COMMIT'] + "/lock.mdb"
 # check if the above URLs exist
 for url in [url1, url2]:
@@ -73,6 +79,8 @@ for url in [url1, url2]:
     # URL exists, download file
     print('Downloading URL to verify checksum: ' + url)
     file_name = url.rsplit('/', 1)[1]
+    # Remove suffix, if exists
+    file_name = file_name.rsplit('?', 1)[0]
     r = requests.get(url, allow_redirects=True)
     if r.status_code > 399:
         # RESTART JOB
@@ -96,17 +104,21 @@ for url in [url1, url2]:
         else:
             # checksum valid
             print(file_name + " sha256sum is valid")
+            print('Original SHA256: ' + data_sha256)
+            print('Download SHA256: ' + downloaded_sha256)
             os.remove(file_name)
     if file_name == "lock.mdb":
         if lock_sha256 != downloaded_sha256:
             print('SHA256 did not match for lock.mdb')
-            print('Original SHA256: ' + data_sha256)
+            print('Original SHA256: ' + lock_sha256)
             print('Download SHA256: ' + downloaded_sha256)
             # RESTART JOB
             restart_job()
         else:
             # checksum valid
             print(file_name + " sha256sum is valid")
+            print('Original SHA256: ' + lock_sha256)
+            print('Download SHA256: ' + downloaded_sha256)
             os.remove(file_name)
 
 

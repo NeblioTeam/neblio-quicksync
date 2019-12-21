@@ -1,4 +1,4 @@
-import os, json, uuid, hashlib
+import os, json, uuid, hashlib, glob
 
 
 # set up env vars if we are in github actions
@@ -7,32 +7,35 @@ if os.environ.get('TRAVIS_API_TOKEN') is None:
 	os.environ['BUILD_DIR'] = os.environ['GITHUB_WORKSPACE']
 
 filename = 'download.json'
+chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
+suffix = '?parts=' + str(chunkCount-1)
 with open(filename, 'r') as f:
     data = json.load(f)
-    data.sort(key=lambda x: x['dbversion'], reverse=True)
+    # sort the array in ascending order by dbversion, then only modify the last element in the array
+    data.sort(key=lambda x: x['dbversion'], reverse=False)
     data_urls = []
-    data_urls.append("https://quicksync.ams3.digitaloceanspaces.com/txlmdb/" + os.environ['COMMIT'] + "/data.mdb")
-    data_urls.append("https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/" + os.environ['COMMIT'] + "/data.mdb")
-    data[0]['files'][1]['url'] = data_urls
-    data[0]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
+    data_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
+    data_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
+    data[-1]['files'][1]['url'] = data_urls
+    data[-1]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
     with open(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096),b""):
             sha256_hash.update(byte_block)
-    data[0]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
+    data[-1]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
 
     lock_urls = []
-    lock_urls.append("https://quicksync.ams3.digitaloceanspaces.com/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
-    lock_urls.append("https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
-    data[0]['files'][0]['url'] = lock_urls
-    data[0]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
+    lock_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
+    lock_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
+    data[-1]['files'][0]['url'] = lock_urls
+    data[-1]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
     sha256_hash = hashlib.sha256()
     with open(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096),b""):
             sha256_hash.update(byte_block)
-    data[0]['files'][0]['sha256sum'] = sha256_hash.hexdigest()
+    data[-1]['files'][0]['sha256sum'] = sha256_hash.hexdigest()
 
 print("Writing the following to download.json")
 print(json.dumps(data, indent=2))

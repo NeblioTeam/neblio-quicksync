@@ -1,6 +1,7 @@
 name: neblio-quicksync
 
 on:
+  push:
   repository_dispatch:
   schedule:
     - cron:  '15 05 * * *'
@@ -33,6 +34,7 @@ jobs:
       run: |
         echo "::set-env name=BUILD_DIR::$(echo ${GITHUB_WORKSPACE})"
         echo "::set-env name=DEST_DIR::$(echo txlmdb/)$(echo ${GITHUB_SHA})"
+        echo "::set-env name=target_v::linux_daemon"
         pip install awscli --upgrade --user
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
@@ -73,10 +75,10 @@ jobs:
         git config --global user.name "NeblioTeam"
         git checkout master
         python -u update_json.py
-        git add download.json
-        git commit -m "Daily update of download.json for QuickSync"
-        git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
-        echo "Removing Old Files"
-        aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://ams3.digitaloceanspaces.com
-        aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
+        # git add download.json
+        # git commit -m "Daily update of download.json for QuickSync"
+        # git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
+        # echo "Removing Old Files"
+        # aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://ams3.digitaloceanspaces.com
+        # aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
 
