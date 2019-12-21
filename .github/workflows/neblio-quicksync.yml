@@ -3,8 +3,8 @@ name: neblio-quicksync
 on:
   push:
   repository_dispatch:
-  schedule:
-    - cron:  '15 05 * * *'
+  # schedule:
+  #   - cron:  '15 05 * * *'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
