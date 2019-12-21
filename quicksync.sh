@@ -4,8 +4,8 @@
 set -e
 
 # clone and build our repo
-git clone -b master https://github.com/NeblioTeam/neblio .
-cd neblio
+git clone -b master https://github.com/NeblioTeam/neblio
+mv ./neblio/* ./
 python ci_scripts/test_linux-daemon-gui.py
 
 echo "Finished Building. Syncing blockchain data"
