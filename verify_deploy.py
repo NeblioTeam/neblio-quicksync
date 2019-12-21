@@ -104,6 +104,8 @@ for url in [url1, url2]:
         else:
             # checksum valid
             print(file_name + " sha256sum is valid")
+            print('Original SHA256: ' + data_sha256)
+            print('Download SHA256: ' + downloaded_sha256)
             os.remove(file_name)
     if file_name == "lock.mdb":
         if lock_sha256 != downloaded_sha256:
@@ -115,6 +117,8 @@ for url in [url1, url2]:
         else:
             # checksum valid
             print(file_name + " sha256sum is valid")
+            print('Original SHA256: ' + data_sha256)
+            print('Download SHA256: ' + downloaded_sha256)
             os.remove(file_name)
 
 
