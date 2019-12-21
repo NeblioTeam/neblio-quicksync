@@ -43,14 +43,14 @@
     "files": [
       {
         "url": [
-          "https://quicksync2.nebl.io/tmp/lock.mdb"
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/tmp/lock.mdb"
         ],
         "sha256sum": "4e29c6a911da10160339b975672000ab22679a04cd401cbbc6ac4c482160fa1a",
         "size": 8192
       },
       {
         "url": [
-          "https://quicksync2.nebl.io/tmp/data.mdb"
+          "https://quicksync-backup.sfo2.digitaloceanspaces.com/tmp/data.mdb"
         ],
         "sha256sum": "05f6f1905c0115e56eeca83f6fde5efe3aace605c80105472d3d4b83d9139e43",
         "size": 2831347712
