@@ -14,6 +14,7 @@ mkdir -p $HOME/.neblio
 cat <<EOF > $HOME/.neblio/neblio.conf
 rpcuser=${RPCUSER:-nebliorpc}
 rpcpassword=${RPCPASSWORD:-rpctemp}
+printtoconsole=1
 EOF
 
 # start nebliod, which will kick off QuickSync
