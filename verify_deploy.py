@@ -56,7 +56,7 @@ chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk
 suffix = '?parts=' + str(chunkCount-1)
 if not os.path.exists(tmp_dir):
     # check first download
-    prefix = "https://quicksync.nebl.io/txlmdb/"
+    prefix = "https://quicksync2.nebl.io/txlmdb/"
     os.mkdir(tmp_dir) # dir does not exist, create it
 else:
     # check second download
