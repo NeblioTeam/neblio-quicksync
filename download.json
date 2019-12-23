@@ -50,7 +50,7 @@
       },
       {
         "url": [
-          "https://quicksync2.nebl.io/txlmdb/15df0a96fe8cb0210b33c6844f0764c31b981950/data.mdb?parts=27"
+          "https://quicksync2.nebl.io/txlmdb/15df0a96fe8cb0210b33c6844f0764c31b981950/parts=27/data.mdb"
         ],
         "size": 2841563136,
         "sha256sum": "bb6b7bbbc552730158814444edd42e5546db12dea99a566769eaa7ac51e95942"

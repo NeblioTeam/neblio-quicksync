@@ -53,7 +53,7 @@ print(data_sha256)
 tmp_dir = 'tmp_download'
 prefix = ''
 chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
-suffix = '?parts=' + str(chunkCount-1)
+parts = '/parts=' + str(chunkCount-1)
 if not os.path.exists(tmp_dir):
     # check first download
     prefix = "https://quicksync2.nebl.io/txlmdb/"
@@ -65,10 +65,10 @@ else:
 os.chdir(tmp_dir)
 downloaded_sha256 = ''
 url1 = ''
-if suffix is None:
+if parts is None:
     url1 = prefix + os.environ['COMMIT'] + "/data.mdb"
 else:
-    url1 = prefix + os.environ['COMMIT'] + "/data.mdb" + suffix
+    url1 = prefix + os.environ['COMMIT'] + parts + "/data.mdb"
 url2 = prefix + os.environ['COMMIT'] + "/lock.mdb"
 # check if the above URLs exist
 for url in [url1, url2]:
@@ -79,8 +79,6 @@ for url in [url1, url2]:
     # URL exists, download file
     print('Downloading URL to verify checksum: ' + url)
     file_name = url.rsplit('/', 1)[1]
-    # Remove suffix, if exists
-    file_name = file_name.rsplit('?', 1)[0]
     r = requests.get(url, allow_redirects=True)
     if r.status_code > 399:
         # RESTART JOB

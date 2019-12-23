@@ -8,14 +8,14 @@ if os.environ.get('TRAVIS_API_TOKEN') is None:
 
 filename = 'download.json'
 chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
-suffix = '?parts=' + str(chunkCount-1)
+parts = '/parts=' + str(chunkCount-1)
 with open(filename, 'r') as f:
     data = json.load(f)
     # sort the array in ascending order by dbversion, then only modify the last element in the array
     data.sort(key=lambda x: x['dbversion'], reverse=False)
     data_urls = []
     # data_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
-    data_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
+    data_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + parts + "/data.mdb")
     data[-1]['files'][1]['url'] = data_urls
     data[-1]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
