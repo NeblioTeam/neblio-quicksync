@@ -42,17 +42,17 @@ jobs:
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
-    - name: Upload Quicksync Files to AMS3
-      uses: jakejarvis/s3-sync-action@v0.5.0
-      with:
-        args: --acl public-read
-      env:
-        AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
-        AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
-        SOURCE_DIR: txlmdb
-    - name: Verify Uploaded Files on AMS3
-      run: |
-        python -u verify_deploy.py
+    # - name: Upload Quicksync Files to AMS3
+    #   uses: jakejarvis/s3-sync-action@v0.5.0
+    #   with:
+    #     args: --acl public-read
+    #   env:
+    #     AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
+    #     AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
+    #     SOURCE_DIR: txlmdb
+    # - name: Verify Uploaded Files on AMS3
+    #   run: |
+    #     python -u verify_deploy.py
     - name: Upload Quicksync Files to SFO2
       uses: jakejarvis/s3-sync-action@v0.5.0
       with:
