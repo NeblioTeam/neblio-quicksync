@@ -14,7 +14,7 @@ with open(filename, 'r') as f:
     # sort the array in ascending order by dbversion, then only modify the last element in the array
     data.sort(key=lambda x: x['dbversion'], reverse=False)
     data_urls = []
-    data_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
+    # data_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
     data_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
     data[-1]['files'][1]['url'] = data_urls
     data[-1]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
@@ -26,7 +26,7 @@ with open(filename, 'r') as f:
     data[-1]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
 
     lock_urls = []
-    lock_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
+    # lock_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
     lock_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
     data[-1]['files'][0]['url'] = lock_urls
     data[-1]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
