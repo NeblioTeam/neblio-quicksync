@@ -67,6 +67,11 @@ jobs:
     - name: If Failure Restart Job
       if: failure()
       run: |
+        git config --global user.email "info@nebl.io"
+        git config --global user.name "NeblioTeam"
+        git checkout master
+        git commit --allow-empty -m "Daily update of download.json for QuickSync Failed. Restarting."
+        git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         curl POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H "Authorization: token $GHAT" --data '{"event_type": "restart_neblio_quicksync"}'
     - name: If Success Update JSON Files & Cleanup
       if: success()
