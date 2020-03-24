@@ -15,7 +15,7 @@ with open(filename, 'r') as f:
     data.sort(key=lambda x: x['dbversion'], reverse=False)
     data_urls = []
     # data_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
-    data_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + parts + "/data.mdb")
+    data_urls.append("https://assets.nebl.io/txlmdb/" + os.environ['COMMIT'] + parts + "/data.mdb")
     data[-1]['files'][1]['url'] = data_urls
     data[-1]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
@@ -27,7 +27,7 @@ with open(filename, 'r') as f:
 
     lock_urls = []
     # lock_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
-    lock_urls.append("https://quicksync2.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
+    lock_urls.append("https://assets.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
     data[-1]['files'][0]['url'] = lock_urls
     data[-1]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
     sha256_hash = hashlib.sha256()
