@@ -50,7 +50,7 @@
       }, 
       {
         "url": [
-          "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb/3682b141d1dd1a775d25332fcd335da6160e0a78/data.mdb"
+          "https://assets.nebl.io/txlmdb/3682b141d1dd1a775d25332fcd335da6160e0a78/parts=31/data.mdb"
         ], 
         "size": 3285094400, 
         "sha256sum": "a4bcc742e1d2362a24314e3e7f89560f1b97146c69cd30d58097157c1f40f1af"
