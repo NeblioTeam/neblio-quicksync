@@ -39,6 +39,7 @@ with open(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
         sha256_hash.update(byte_block)
 lock_sha256 = sha256_hash.hexdigest()
 print(lock_sha256)
+os.remove(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
 
 # calculate data.mdb checksum
 print('Calculating sha256sum for uploaded data.mdb')
@@ -49,10 +50,14 @@ with open(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
         sha256_hash.update(byte_block)
 data_sha256 = sha256_hash.hexdigest()
 print(data_sha256)
+os.remove(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
 
 tmp_dir = 'tmp_download'
 prefix = ''
 chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
+# write the number of chunks to a folder so we can delete the chunks to save space
+os.mkdir(os.environ['BUILD_DIR'] + '/txlmdb/chunks.' + chunkCount)
+os.remove(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb.chunk*')
 parts = '/parts=' + str(chunkCount-1)
 if not os.path.exists(tmp_dir):
     # check first download
@@ -104,7 +109,8 @@ for url in [url1, url2]:
             print(file_name + " sha256sum is valid")
             print('Original SHA256: ' + data_sha256)
             print('Download SHA256: ' + downloaded_sha256)
-            os.remove(file_name)
+            # move verified file to expected dir
+            os.replace(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, os.environ['BUILD_DIR'] + '/txlmdb/' + file_name)
     if file_name == "lock.mdb":
         if lock_sha256 != downloaded_sha256:
             print('SHA256 did not match for lock.mdb')
@@ -117,7 +123,8 @@ for url in [url1, url2]:
             print(file_name + " sha256sum is valid")
             print('Original SHA256: ' + lock_sha256)
             print('Download SHA256: ' + downloaded_sha256)
-            os.remove(file_name)
+            # move verified file to expected dir
+            os.replace(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, os.environ['BUILD_DIR'] + '/txlmdb/' + file_name)
 
 
 
