@@ -57,7 +57,13 @@ prefix = ''
 chunkCount = len(glob.glob1(os.environ['BUILD_DIR'] + '/txlmdb/','data.mdb.chunk*'))
 # write the number of chunks to a folder so we can delete the chunks to save space
 os.mkdir(os.environ['BUILD_DIR'] + '/txlmdb/chunks.' + str(chunkCount))
-os.remove(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb.chunk*')
+# delete chunks to save space
+chunkList = glob.glob(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb.chunk*')
+for chunk in chunkList:
+    try:
+        os.remove(chunk)
+    except:
+        print("Error while deleting chunk: ", chunk)
 parts = '/parts=' + str(chunkCount-1)
 if not os.path.exists(tmp_dir):
     # check first download
