@@ -25,6 +25,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: free disk space
       run: |
+        df -h
         sudo swapoff -a || true
         sudo rm -f /swapfile || true
         sudo apt clean || true
