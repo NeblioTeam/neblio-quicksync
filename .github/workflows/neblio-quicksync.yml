@@ -29,7 +29,6 @@ jobs:
         sudo swapoff -a || true
         sudo rm -f /swapfile || true
         sudo apt clean || true
-        docker rmi $(docker image ls -aq) || true
         df -h
     - name: ccache
       uses: actions/cache@v1
