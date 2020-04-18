@@ -9,7 +9,7 @@ if os.environ.get('TRAVIS_API_TOKEN') is None:
 filename = 'download.json'
 # get the number of chunks from our previously created file
 chunkCount = glob.glob(os.environ['BUILD_DIR'] + '/txlmdb/chunks.*')[0].split('chunks.')[1]
-parts = '/parts=' + str(chunkCount-1)
+parts = '/parts=' + str(int(chunkCount)-1)
 with open(filename, 'r') as f:
     data = json.load(f)
     # sort the array in ascending order by dbversion, then only modify the last element in the array
