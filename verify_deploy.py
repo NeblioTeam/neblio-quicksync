@@ -116,7 +116,7 @@ for url in [url1, url2]:
             print('Original SHA256: ' + data_sha256)
             print('Download SHA256: ' + downloaded_sha256)
             # move verified file to expected dir
-            os.replace(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, os.environ['BUILD_DIR'] + '/txlmdb/' + file_name)
+            os.rename(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, os.environ['BUILD_DIR'] + '/txlmdb/' + file_name)
     if file_name == "lock.mdb":
         if lock_sha256 != downloaded_sha256:
             print('SHA256 did not match for lock.mdb')
@@ -130,7 +130,7 @@ for url in [url1, url2]:
             print('Original SHA256: ' + lock_sha256)
             print('Download SHA256: ' + downloaded_sha256)
             # move verified file to expected dir
-            os.replace(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, os.environ['BUILD_DIR'] + '/txlmdb/' + file_name)
+            os.rename(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, os.environ['BUILD_DIR'] + '/txlmdb/' + file_name)
 
 
 
