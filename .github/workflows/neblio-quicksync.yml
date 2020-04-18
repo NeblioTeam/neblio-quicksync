@@ -26,8 +26,6 @@ jobs:
     - name: free disk space
       run: |
         df -h
-        sudo swapoff -a || true
-        sudo rm -f /swapfile || true
         sudo apt clean || true
         df -h
     - name: ccache
