@@ -18,4 +18,4 @@ To perform a manual Quicksync, get the links from here for data.mdb and lock.mdb
 - Open nebliod/neblio-Qt
 ```
 
-If your wallet keeps trying to automaticly quicksync and you do not want it to, you can add noquicksync=1 to your neblio.conf
+If your wallet keeps trying to automatically quicksync and you do not want it to, you can add noquicksync=1 to your neblio.conf
