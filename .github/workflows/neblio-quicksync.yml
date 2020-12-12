@@ -11,10 +11,8 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   GHAT: ${{ secrets.GHAT }}
-  AWS_S3_BUCKET1: 'quicksync'
-  AWS_S3_ENDPOINT1: 'https://ams3.digitaloceanspaces.com'
-  AWS_S3_BUCKET2: 'quicksync-backup'
-  AWS_S3_ENDPOINT2: 'https://sfo2.digitaloceanspaces.com'
+  AWS_S3_BUCKET: 'neblio-assets'
+  AWS_S3_ENDPOINT: 'https://sfo2.digitaloceanspaces.com'
 
 jobs:
   linux_daemon_build:
@@ -47,26 +45,15 @@ jobs:
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
-    # - name: Upload Quicksync Files to AMS3
-    #   uses: jakejarvis/s3-sync-action@v0.5.0
-    #   with:
-    #     args: --acl public-read
-    #   env:
-    #     AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET1 }}
-    #     AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT1 }}
-    #     SOURCE_DIR: txlmdb
-    # - name: Verify Uploaded Files on AMS3
-    #   run: |
-    #     python -u verify_deploy.py
-    - name: Upload Quicksync Files to SFO2
+    - name: Upload Quicksync Files to S3
       uses: jakejarvis/s3-sync-action@v0.5.0
       with:
         args: --acl public-read
       env:
-        AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET2 }}
-        AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT2 }}
-        SOURCE_DIR: txlmdb
-    - name: Verify Uploaded Files on SFO2
+        AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET }}
+        AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT }}
+        SOURCE_DIR: quicksync/txlmdb
+    - name: Verify Uploaded Files on S3
       run: |
         python -u verify_deploy.py
     - name: If Failure Restart Job
@@ -89,6 +76,5 @@ jobs:
         git commit -m "Daily update of download.json for QuickSync"
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         echo "Removing Old Files"
-        aws s3 rm s3://quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://ams3.digitaloceanspaces.com
-        aws s3 rm s3://quicksync-backup/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
+        aws s3 rm s3://neblio-assets/quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
 

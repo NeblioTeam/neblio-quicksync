@@ -4,59 +4,59 @@
       {
         "url": [
           "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-70513/lock.mdb"
-        ], 
-        "size": 8192, 
+        ],
+        "size": 8192,
         "sha256sum": "1f89f6a967baad3e89fa101c149842662163338232fc1bf56fbd7d753332997c"
-      }, 
+      },
       {
         "url": [
           "https://quicksync.ams3.digitaloceanspaces.com/old/txlmdb-70513/data.mdb"
-        ], 
-        "size": 1641426944, 
+        ],
+        "size": 1641426944,
         "sha256sum": "cb769965ca7a61468aa23046b8b6431ea3067571c6f99f31d15e600fce131718"
       }
-    ], 
-    "dbversion": 70513, 
+    ],
+    "dbversion": 70513,
     "os": "any"
-  }, 
+  },
   {
     "files": [
       {
         "url": [
           "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb-70514/lock.mdb"
-        ], 
-        "size": 8192, 
+        ],
+        "size": 8192,
         "sha256sum": "043432048c5451984422d2d1a51e3384a6b821e574c910fc40729b850842b7c8"
-      }, 
+      },
       {
         "url": [
           "https://quicksync-backup.sfo2.digitaloceanspaces.com/txlmdb-70514/data.mdb"
-        ], 
-        "size": 2817253376, 
+        ],
+        "size": 2817253376,
         "sha256sum": "3dbd441152419376540d970a2d66ac11f1f89247a399f26a1a6f4c0e8b7dacc3"
       }
-    ], 
-    "dbversion": 70514, 
+    ],
+    "dbversion": 70514,
     "os": "any"
-  }, 
+  },
   {
     "files": [
       {
         "url": [
-          "https://assets.nebl.io/txlmdb/f0bc7b04704638545843cff7274c5a508a656163/lock.mdb"
-        ], 
-        "size": 8192, 
+          "https://assets.nebl.io/quicksync/txlmdb/f0bc7b04704638545843cff7274c5a508a656163/lock.mdb"
+        ],
+        "size": 8192,
         "sha256sum": "7c5dffb459702242e83ac488874feecb82db10438fe036519e74056e05c369ec"
-      }, 
+      },
       {
         "url": [
-          "https://assets.nebl.io/txlmdb/f0bc7b04704638545843cff7274c5a508a656163/data.mdb"
-        ], 
-        "size": 4579295232, 
+          "https://assets.nebl.io/quicksync/txlmdb/f0bc7b04704638545843cff7274c5a508a656163/data.mdb"
+        ],
+        "size": 4579295232,
         "sha256sum": "8cea645711be71e11cd75bdb3c87804cc805676bb8def4ed120abc889a67a31f"
       }
-    ], 
-    "dbversion": 70515, 
+    ],
+    "dbversion": 70515,
     "os": "any"
   }
 ]
