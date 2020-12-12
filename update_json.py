@@ -7,16 +7,14 @@ if os.environ.get('TRAVIS_API_TOKEN') is None:
 	os.environ['BUILD_DIR'] = os.environ['GITHUB_WORKSPACE']
 
 filename = 'download.json'
-# get the number of chunks from our previously created file
-chunkCount = glob.glob(os.environ['BUILD_DIR'] + '/txlmdb/chunks.*')[0].split('chunks.')[1]
-parts = '/parts=' + str(int(chunkCount)-1)
+
 with open(filename, 'r') as f:
     data = json.load(f)
     # sort the array in ascending order by dbversion, then only modify the last element in the array
     data.sort(key=lambda x: x['dbversion'], reverse=False)
+
     data_urls = []
-    # data_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb" + suffix)
-    data_urls.append("https://assets.nebl.io/txlmdb/" + os.environ['COMMIT'] + parts + "/data.mdb")
+    data_urls.append("https://assets.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/data.mdb")
     data[-1]['files'][1]['url'] = data_urls
     data[-1]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
@@ -27,7 +25,6 @@ with open(filename, 'r') as f:
     data[-1]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
 
     lock_urls = []
-    # lock_urls.append("https://quicksync.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
     lock_urls.append("https://assets.nebl.io/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
     data[-1]['files'][0]['url'] = lock_urls
     data[-1]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
