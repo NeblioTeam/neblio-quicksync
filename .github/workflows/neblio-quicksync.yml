@@ -52,7 +52,8 @@ jobs:
       env:
         AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET }}
         AWS_S3_ENDPOINT: ${{ env.AWS_S3_ENDPOINT }}
-        SOURCE_DIR: quicksync/txlmdb
+        SOURCE_DIR: txlmdb
+        DEST_DIR: quicksync
     - name: Verify Uploaded Files on S3
       run: |
         python -u verify_deploy.py
