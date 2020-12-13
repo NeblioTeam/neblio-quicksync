@@ -46,7 +46,7 @@ jobs:
       run: |
         /bin/bash quicksync.sh
     - name: Upload Quicksync Files to S3
-      uses: jakejarvis/s3-sync-action@v0.5.1
+      uses: NeblioTeam/s3-sync-action@v0.5.2
       with:
         args: --acl public-read
       env:
