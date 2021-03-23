@@ -4,7 +4,7 @@
 set -e
 
 # clone and build our repo
-git clone -b master https://github.com/NeblioTeam/neblio
+git clone -b v3.2.0 https://github.com/NeblioTeam/neblio
 mv ./neblio/* ./
 python ci_scripts/test_linux-daemon-gui.py
 
