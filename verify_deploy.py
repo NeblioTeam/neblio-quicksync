@@ -76,11 +76,13 @@ for url in [url1, url2]:
     # URL exists, download file
     print('Downloading URL to verify checksum: ' + url)
     file_name = url.rsplit('/', 1)[1]
-    r = requests.get(url, allow_redirects=True)
-    if r.status_code > 399:
-        # RESTART JOB
-        restart_job()
-    open(file_name, 'wb').write(r.content)
+    with requests.get(url, stream=True) as r:
+        if r.status_code > 399:
+            # RESTART JOB
+            restart_job()
+        with open(file_name, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
     # verify checksum
     sha256_hash = hashlib.sha256()
     with open(os.environ['BUILD_DIR'] + '/' + tmp_dir + '/' + file_name, "rb") as f:
