@@ -4,7 +4,17 @@
 set -e
 
 # clone and build our repo
-git clone -b v3.2.0 https://github.com/NeblioTeam/neblio
+
+# for DB_VER 70516 build v3.2.0
+if [ "$DB_VER" -eq "70516" ]; then
+    git clone -b v3.2.0 https://github.com/NeblioTeam/neblio
+fi
+
+# for DB_VER 70517 build master
+if [ "$DB_VER" -eq "70517" ]; then
+    git clone -b master https://github.com/NeblioTeam/neblio
+fi
+
 mv ./neblio/* ./
 python ci_scripts/test_linux-daemon-gui.py
 
