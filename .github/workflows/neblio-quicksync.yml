@@ -34,9 +34,11 @@ jobs:
         key: ${{ runner.OS }}--linux_daemon-${{ github.job }}-${{ github.sha }}-${{ github.run_id }}
         restore-keys: |
           ${{ runner.OS }}--linux_daemon-${{ github.job }}-
-    - name: Install Dependencies & Setup Environment
+    - name: Set QuickSync DB_VER
       run: |
         echo "DB_VER=70516" >> $GITHUB_ENV
+    - name: Install Dependencies & Setup Environment
+      run: |
         echo "BUILD_DIR=$(echo ${GITHUB_WORKSPACE})" >> $GITHUB_ENV
         echo "DEST_DIR=$(echo quicksync/txlmdb-)$(echo ${DB_VER})$(echo /)$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
         echo "target_v=linux_daemon" >> $GITHUB_ENV
@@ -102,9 +104,11 @@ jobs:
         key: ${{ runner.OS }}--linux_daemon-${{ github.job }}-${{ github.sha }}-${{ github.run_id }}
         restore-keys: |
           ${{ runner.OS }}--linux_daemon-${{ github.job }}-
-    - name: Install Dependencies & Setup Environment
+    - name: Set QuickSync DB_VER
       run: |
         echo "DB_VER=70517" >> $GITHUB_ENV
+    - name: Install Dependencies & Setup Environment
+      run: |
         echo "BUILD_DIR=$(echo ${GITHUB_WORKSPACE})" >> $GITHUB_ENV
         echo "DEST_DIR=$(echo quicksync/txlmdb-)$(echo ${DB_VER})$(echo /)$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
         echo "target_v=linux_daemon" >> $GITHUB_ENV
