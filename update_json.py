@@ -6,34 +6,44 @@ if os.environ.get('TRAVIS_API_TOKEN') is None:
 	os.environ['COMMIT'] = os.environ.get('GITHUB_SHA')
 	os.environ['BUILD_DIR'] = os.environ['GITHUB_WORKSPACE']
 
+
 filename = 'download.json'
 
 with open(filename, 'r') as f:
     data = json.load(f)
-    # sort the array in ascending order by dbversion, then only modify the last element in the array
+    # sort the array in ascending order by dbversion, then find the index for our target version
     data.sort(key=lambda x: x['dbversion'], reverse=False)
+    index = None
+    for x in data:
+    	if x['dbversion'] == int(os.environ['DB_VER']):
+    		print("Found DB Version")
+    		index = data.index(x)
+    		print(index)
+    		break
+    	else:
+    		print("DB Version Miss")
 
     data_urls = []
-    data_urls.append("https://assets.nebl.io/quicksync/txlmdb/" + os.environ['COMMIT'] + "/data.mdb")
-    data[-1]['files'][1]['url'] = data_urls
-    data[-1]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
+    data_urls.append("https://assets.nebl.io/quicksync/txlmdb-" + os.environ['DB_VER'] + "/" + os.environ['COMMIT'] + "/data.mdb")
+    data[index]['files'][1]['url'] = data_urls
+    data[index]['files'][1]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb')
     sha256_hash = hashlib.sha256()
     with open(os.environ['BUILD_DIR'] + '/txlmdb/data.mdb',"rb") as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096),b""):
             sha256_hash.update(byte_block)
-    data[-1]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
+    data[index]['files'][1]['sha256sum'] = sha256_hash.hexdigest()
 
     lock_urls = []
-    lock_urls.append("https://assets.nebl.io/quicksync/txlmdb/" + os.environ['COMMIT'] + "/lock.mdb")
-    data[-1]['files'][0]['url'] = lock_urls
-    data[-1]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
+    lock_urls.append("https://assets.nebl.io/quicksync/txlmdb-" + os.environ['DB_VER'] + "/" + os.environ['COMMIT'] + "/lock.mdb")
+    data[index]['files'][0]['url'] = lock_urls
+    data[index]['files'][0]['size'] =  os.path.getsize(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb')
     sha256_hash = hashlib.sha256()
     with open(os.environ['BUILD_DIR'] + '/txlmdb/lock.mdb',"rb") as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096),b""):
             sha256_hash.update(byte_block)
-    data[-1]['files'][0]['sha256sum'] = sha256_hash.hexdigest()
+    data[index]['files'][0]['sha256sum'] = sha256_hash.hexdigest()
 
 print("Writing the following to download.json")
 print(json.dumps(data, indent=2))

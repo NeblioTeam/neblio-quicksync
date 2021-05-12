@@ -16,7 +16,7 @@ env:
   AWS_S3_ENDPOINT: 'https://sfo2.digitaloceanspaces.com'
 
 jobs:
-  linux_daemon_build:
+  quicksync-70516:
     runs-on: ubuntu-16.04
     strategy:
       fail-fast: false
@@ -31,11 +31,12 @@ jobs:
       uses: actions/cache@v1
       with:
         path: .ccache
-        key: ${{ runner.OS }}--linux_daemon-${{ github.sha }}
+        key: ${{ runner.OS }}--linux_daemon-${{ github.job }}-${{ github.sha }}-${{ github.run_id }}
         restore-keys: |
-          ${{ runner.OS }}--linux_daemon-
+          ${{ runner.OS }}--linux_daemon-${{ github.job }}-
     - name: Install Dependencies & Setup Environment
       run: |
+        echo "DB_VER=70516" >> $GITHUB_ENV
         echo "BUILD_DIR=$(echo ${GITHUB_WORKSPACE})" >> $GITHUB_ENV
         echo "DEST_DIR=$(echo quicksync/txlmdb/)$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
         echo "target_v=linux_daemon" >> $GITHUB_ENV
@@ -69,13 +70,13 @@ jobs:
     - name: If Success Update JSON Files & Cleanup
       if: success()
       run: |
-        git config --global user.email "info@nebl.io"
-        git config --global user.name "NeblioTeam"
-        git checkout master
+        #git config --global user.email "info@nebl.io"
+        #git config --global user.name "NeblioTeam"
+        #git checkout master
         python -u update_json.py
-        git add download.json
-        git commit -m "Daily update of download.json for QuickSync"
-        git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
-        echo "Removing Old Files"
-        aws s3 rm s3://neblio-assets/quicksync/txlmdb/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
+        #git add download.json
+        #git commit -m "Daily update of download.json for QuickSync"
+        #git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
+        #echo "Removing Old Files"
+        #aws s3 rm s3://neblio-assets/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
 

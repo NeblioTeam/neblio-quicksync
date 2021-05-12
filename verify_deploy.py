@@ -57,11 +57,11 @@ prefix = ''
 
 if not os.path.exists(tmp_dir):
     # check first download
-    prefix = "https://assets.nebl.io/quicksync/txlmdb/"
+    prefix = "https://assets.nebl.io/quicksync/txlmdb-" + os.environ['DB_VER'] + "/"
     os.mkdir(tmp_dir) # dir does not exist, create it
 else:
     # check second download
-    prefix = "https://assets.nebl.io/quicksync/txlmdb/"
+    prefix = "https://assets.nebl.io/quicksync/txlmdb-" + os.environ['DB_VER'] + "/"
 
 os.chdir(tmp_dir)
 downloaded_sha256 = ''
