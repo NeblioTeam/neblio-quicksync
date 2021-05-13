@@ -16,12 +16,8 @@ with open(filename, 'r') as f:
     index = None
     for x in data:
     	if x['dbversion'] == int(os.environ['DB_VER']):
-    		print("Found DB Version")
     		index = data.index(x)
-    		print(index)
     		break
-    	else:
-    		print("DB Version Miss")
 
     data_urls = []
     data_urls.append("https://assets.nebl.io/quicksync/txlmdb-" + os.environ['DB_VER'] + "/" + os.environ['COMMIT'] + "/data.mdb")
