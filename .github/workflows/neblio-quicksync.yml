@@ -66,7 +66,7 @@ jobs:
         git config --global user.email "info@nebl.io"
         git config --global user.name "NeblioTeam"
         git checkout master
-        git commit --allow-empty -m "Daily update of download.json for QuickSync Failed. Restarting."
+        git commit --allow-empty -m "Daily update of download.json for QuickSync ${DB_VER} Failed. Restarting."
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         curl POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H "Authorization: token $GHAT" --data '{"event_type": "restart_neblio_quicksync"}'
     - name: If Success Update JSON Files & Cleanup
@@ -77,7 +77,7 @@ jobs:
         git checkout master
         python -u update_json.py
         git add download.json
-        git commit -m "Daily update of download.json for QuickSync"
+        git commit -m "Daily update of download.json for QuickSync ${DB_VER}"
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         echo "Removing Old Files"
         aws s3 rm s3://neblio-assets/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
@@ -136,7 +136,7 @@ jobs:
         git config --global user.email "info@nebl.io"
         git config --global user.name "NeblioTeam"
         git checkout master
-        git commit --allow-empty -m "Daily update of download.json for QuickSync Failed. Restarting."
+        git commit --allow-empty -m "Daily update of download.json for QuickSync ${DB_VER} Failed. Restarting."
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         curl POST https://api.github.com/repos/NeblioTeam/neblio-quicksync/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -H "Authorization: token $GHAT" --data '{"event_type": "restart_neblio_quicksync"}'
     - name: If Success Update JSON Files & Cleanup
@@ -147,7 +147,7 @@ jobs:
         git checkout master
         python -u update_json.py
         git add download.json
-        git commit -m "Daily update of download.json for QuickSync"
+        git commit -m "Daily update of download.json for QuickSync ${DB_VER}"
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         echo "Removing Old Files"
         aws s3 rm s3://neblio-assets/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
