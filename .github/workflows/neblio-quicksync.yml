@@ -46,6 +46,7 @@ jobs:
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
         sudo pip install requests
+        sudo pip install futures
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
@@ -116,6 +117,7 @@ jobs:
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
         sudo pip install requests
+        sudo pip install futures
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
