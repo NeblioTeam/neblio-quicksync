@@ -42,11 +42,10 @@ jobs:
         echo "BUILD_DIR=$(echo ${GITHUB_WORKSPACE})" >> $GITHUB_ENV
         echo "DEST_DIR=$(echo quicksync/txlmdb-)$(echo ${DB_VER})$(echo /)$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
         echo "target_v=linux_daemon" >> $GITHUB_ENV
-        pip install awscli --upgrade --user
+        pip install awscli==1.19.112 --upgrade --user
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
         sudo pip install requests
-        sudo pip install futures
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
@@ -113,11 +112,10 @@ jobs:
         echo "BUILD_DIR=$(echo ${GITHUB_WORKSPACE})" >> $GITHUB_ENV
         echo "DEST_DIR=$(echo quicksync/txlmdb-)$(echo ${DB_VER})$(echo /)$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
         echo "target_v=linux_daemon" >> $GITHUB_ENV
-        pip install awscli --upgrade --user
+        pip install awscli==1.19.112 --upgrade --user
         sudo pip uninstall -y urllib3
         sudo pip install urllib3==1.22
         sudo pip install requests
-        sudo pip install futures
     - name: Build nebliod for Linux & Sync
       run: |
         /bin/bash quicksync.sh
