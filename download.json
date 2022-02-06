@@ -5,15 +5,15 @@
         "url": [
           "https://assets.nebl.io/quicksync/txlmdb-70514/lock.mdb"
         ], 
-        "sha256sum": "043432048c5451984422d2d1a51e3384a6b821e574c910fc40729b850842b7c8", 
-        "size": 8192
+        "size": 8192, 
+        "sha256sum": "043432048c5451984422d2d1a51e3384a6b821e574c910fc40729b850842b7c8"
       }, 
       {
         "url": [
           "https://assets.nebl.io/quicksync/txlmdb-70514/data.mdb"
         ], 
-        "sha256sum": "3dbd441152419376540d970a2d66ac11f1f89247a399f26a1a6f4c0e8b7dacc3", 
-        "size": 2817253376
+        "size": 2817253376, 
+        "sha256sum": "3dbd441152419376540d970a2d66ac11f1f89247a399f26a1a6f4c0e8b7dacc3"
       }
     ], 
     "dbversion": 70514, 
@@ -25,15 +25,15 @@
         "url": [
           "https://assets.nebl.io/quicksync/txlmdb-70515/lock.mdb"
         ], 
-        "sha256sum": "1e2db8e42fe24b55876bc5125a26006dcbcd8f2b5cfa091b3cd904a79332e8d8", 
-        "size": 8192
+        "size": 8192, 
+        "sha256sum": "1e2db8e42fe24b55876bc5125a26006dcbcd8f2b5cfa091b3cd904a79332e8d8"
       }, 
       {
         "url": [
           "https://assets.nebl.io/quicksync/txlmdb-70515/data.mdb"
         ], 
-        "sha256sum": "67169d0f55835971d314fbae1400914dfb9c8b75fdea5a5035600eaefed793d9", 
-        "size": 4775366656
+        "size": 4775366656, 
+        "sha256sum": "67169d0f55835971d314fbae1400914dfb9c8b75fdea5a5035600eaefed793d9"
       }
     ], 
     "dbversion": 70515, 
@@ -43,17 +43,17 @@
     "files": [
       {
         "url": [
-          "https://assets.nebl.io/quicksync/txlmdb-70516/0a37ad9f65a5280a84955573fc60386267e6e596/lock.mdb"
+          "https://assets.nebl.io/quicksync/txlmdb-70516/ff8578b145daf7d7e90a23d6938611b8b5464259/lock.mdb"
         ], 
-        "sha256sum": "1ea4263c09bccb995f5b7af7aedc598361bde4ac2efa6bf673db888f59c51428", 
-        "size": 8192
+        "size": 8192, 
+        "sha256sum": "de459e9270ef5b8c2234086de3af0d2ae077dcfcfbe86113549f73e73a17845d"
       }, 
       {
         "url": [
-          "https://assets.nebl.io/quicksync/txlmdb-70516/0a37ad9f65a5280a84955573fc60386267e6e596/data.mdb"
+          "https://assets.nebl.io/quicksync/txlmdb-70516/ff8578b145daf7d7e90a23d6938611b8b5464259/data.mdb"
         ], 
-        "sha256sum": "d5dd5b1df138afc2126c5188762795ad644a1cbad378e9dd68e5675aae5ae0fc", 
-        "size": 7293173760
+        "size": 7299092480, 
+        "sha256sum": "db2f32d5a9760f6a2fb160ce11310b905e0d244a2deaf39212759b8988bde25c"
       }
     ], 
     "dbversion": 70516, 
@@ -65,15 +65,15 @@
         "url": [
           "https://assets.nebl.io/quicksync/txlmdb-70517/0a37ad9f65a5280a84955573fc60386267e6e596/lock.mdb"
         ], 
-        "sha256sum": "b80c0f0adb2fec51f0283b124b986d66c4ad49e119c1e5e4186430ce527233a7", 
-        "size": 8192
+        "size": 8192, 
+        "sha256sum": "b80c0f0adb2fec51f0283b124b986d66c4ad49e119c1e5e4186430ce527233a7"
       }, 
       {
         "url": [
           "https://assets.nebl.io/quicksync/txlmdb-70517/0a37ad9f65a5280a84955573fc60386267e6e596/data.mdb"
         ], 
-        "sha256sum": "9fef885099e91638864dadec92b5c31b23a32871568629a0d57748e03826331b", 
-        "size": 8375779328
+        "size": 8375779328, 
+        "sha256sum": "9fef885099e91638864dadec92b5c31b23a32871568629a0d57748e03826331b"
       }
     ], 
     "dbversion": 70517, 
