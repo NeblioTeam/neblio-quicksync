@@ -12,8 +12,8 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   GHAT: ${{ secrets.GHAT }}
-  AWS_S3_BUCKET: 'neblio-assets'
-  AWS_S3_ENDPOINT: 'https://sfo2.digitaloceanspaces.com'
+  AWS_S3_BUCKET: 'neblio-asset-repo'
+  AWS_S3_ENDPOINT: 'https://sfo3.digitaloceanspaces.com'
 
 jobs:
   quicksync-70516:
@@ -80,7 +80,7 @@ jobs:
         git commit -m "Daily update of download.json for QuickSync ${DB_VER}"
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         echo "Removing Old Files"
-        aws s3 rm s3://neblio-assets/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
+        aws s3 rm s3://neblio-asset-repo/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo3.digitaloceanspaces.com
 
 
 
@@ -150,5 +150,5 @@ jobs:
         git commit -m "Daily update of download.json for QuickSync ${DB_VER}"
         git push https://${GHAT}@github.com/NeblioTeam/neblio-quicksync master
         echo "Removing Old Files"
-        aws s3 rm s3://neblio-assets/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo2.digitaloceanspaces.com
+        aws s3 rm s3://neblio-asset-repo/quicksync/txlmdb-${DB_VER}/ --recursive --exclude "$GITHUB_SHA/*" --endpoint=https://sfo3.digitaloceanspaces.com
 
