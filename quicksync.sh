@@ -40,7 +40,7 @@ do
     if [ "$LOCAL_COUNT" -eq "$REMOTE_COUNT" ]; then
         break
     fi
-    if [ "$i" -gt 120 ]; then
+    if [ "$i" -gt 240 ]; then
         # exit after 60 minutes no matter what
         exit 1
     fi
